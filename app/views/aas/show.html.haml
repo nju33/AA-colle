@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @aa.name
+%p
+  %b Body:
+  = @aa.body
+
+= link_to 'Edit', edit_aa_path(@aa)
+\|
+= link_to 'Back', aas_path

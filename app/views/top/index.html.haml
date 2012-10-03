@@ -1,0 +1,30 @@
+-if notice
+  %p{:id => "notice"}= notice
+
+#search-area
+  =form_tag do
+
+    =search_field_tag :search, params[:search]
+
+    =submit_tag '検索'
+
+#new-aa-list
+  -@asciiArts.each do |aa|
+    %dl
+      %dt
+        %dl
+          %dt
+            %h2=aa.name
+          %dd#tags
+            -if aa.tags.empty?
+              %ul
+                %li タグが付けられていません
+            -else
+              %ul
+                -aa.tags.each do |tag|
+                  %li=tag.tag
+            =link_to 'タグを登録する', new_tag_path
+      %dd
+        #aa=simple_format(aa.body)
+  
+

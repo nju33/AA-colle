@@ -1,0 +1,21 @@
+%h1 Listing aas
+
+%table
+  %tr
+    %th Name
+    %th Body
+    %th
+    %th
+    %th
+
+  - @aas.each do |aa|
+    %tr
+      %td= aa.name
+      %td= aa.body
+      %td= link_to 'Show', aa
+      %td= link_to 'Edit', edit_aa_path(aa)
+      %td= link_to 'Destroy', aa, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Aa', new_aa_path

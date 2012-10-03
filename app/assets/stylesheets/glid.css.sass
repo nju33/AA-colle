@@ -1,0 +1,23 @@
+@charset "UTF-8"
+
+// 12カラム
+$column: (980 / 12 - 13) / 967 * 100%
+$columns: 12
+
+=row($columns: $columns)
+  display: block
+  width: $column * $columns
+  +clearfix
+
+=column($x: $columns, $columns: $columns)
+  display: inline
+  width:  100% / $columns * $x
+  float: left
+
+=push($offset: 1, $columns: $columns)
+  margin-left: 100% / $columns * $offset 
+
+=pull($offset: 1, $columns: $columns)
+  margin-right: 100% / $columns * $offset
+
+

@@ -1,0 +1,119 @@
+@charset "utf-8"
+
+// CSSリセット
+@import reset
+// プレフィックスが必要なものまとめ
+@import prefix
+// 変数まとめ
+@import variable
+// 12Columns
+@import glid
+
+body
+  font:
+    size: 100% / 16 * 13
+    family: "MS PGothic", "Osaka", Arial, sans-serif 
+  line-height: 1.4em
+  padding-top: 5px
+
+// top
+#contents
+  max-width: $width
+  margin: 0 auto
+  +row
+
+  #side
+    +borderBox
+    +column(1, 4)
+
+    header
+      padding-top: 1em
+      +row
+
+      #title
+        +sideField
+
+        h1
+          background: url("title.png")
+          width: inherit
+          height: 156px
+          width: 100%
+          text-indent: 100%
+          white-space: nowrap
+          overflow: hidden
+
+      #registration
+        background-color: $mainColor
+        height: 2em
+        +sideField
+
+        a
+          font-size: 2em
+          color: $baseColor
+          position: relative
+          top: 0.2em
+          margin-left: .2em
+
+      nav
+        +sideField
+
+        ul li
+          background-color: $mainColor
+          padding: 5px 8px
+
+          a
+            font-size: 2.1em
+            color: $baseColor
+
+
+  #main
+    +borderBox
+    +column(8)
+
+    #search-area
+      margin-bottom: 1em
+
+    #new-aa-list
+
+      dl
+
+        dt 
+          padding: 0.2em
+
+          h2
+            margin: 0.2em
+            font-size: 2.1em
+
+          #tags
+            height: 1.4em
+
+            ul
+              display: inline
+
+              li
+                float: left
+                margin-left: 0.5em
+
+            [href="/tags/new"]
+              margin-left: .5em
+
+        dd 
+          clear: both
+
+          #aa
+            margin: 0 0 1em
+            background-color: #f3f3f3
+            +border-boxShadow(0.2em)
+            +borderBox
+
+            p
+              font-family: "MS Pゴシック"
+              line-height: normal
+              font-size: 100% / 16 * 12
+
+  footer
+    clear: both
+
+    span
+      display: block
+      text-align: center

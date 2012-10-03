@@ -1,0 +1,25 @@
+@charset "UTF-8"
+
+// CSSリセット
+@import reset
+// プレフィックスが必要なものまとめ
+@import prefix
+// 変数まとめ
+@import variable
+// 12Columns
+@import glid
+
+#aas
+
+  #main
+    margin-top: 5px
+    +column(8, 8)
+
+    form
+      
+      label
+        +column(1, 8)
+        +pull(7, 8)
+
+      input[type="text"], textarea, .aciton
+        +column(8, 8)
