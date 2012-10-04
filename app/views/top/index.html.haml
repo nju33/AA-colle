@@ -1,30 +1,22 @@
 -if notice
   %p{:id => "notice"}= notice
 
-#search-area
-  =form_tag do
-
-    =search_field_tag :search, params[:search]
-
-    =submit_tag '検索'
-
-#new-aa-list
-  -@asciiArts.each do |aa|
+#aa-list
+  -@asciiArts.each_with_index do |aa, i|
     %dl
       %dt
         %dl
           %dt
             %h2=aa.name
-          %dd#tags
+          %dd.tags
             -if aa.tags.empty?
               %ul
                 %li タグが付けられていません
             -else
               %ul
                 -aa.tags.each do |tag|
-                  %li=tag.tag
-            =link_to 'タグを登録する', new_tag_path
+                  %li=link_to tag.tag, tags_path(:tag => tag.tag)
+            =link_to 'タグを編集する', new_tag_path(:aa_id => aa.id)
       %dd
-        #aa=simple_format(aa.body)
-  
-
+        %div{:id => "aa#{i}", :class => "aa"}=simple_format(aa.body)
+        .copy-button クリップボードにコピー

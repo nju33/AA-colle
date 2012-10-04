@@ -4,7 +4,10 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    tags = Tag.where(:tag => params[:tag]).select('aa_id')
+    @tags_count = tags.size
+    @aas = Aa.where(:id => tags)
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +30,8 @@ class TagsController < ApplicationController
   # GET /tags/new.json
   def new
     @tag = Tag.new
+    @tags = Tag.where(:aa_id => params[:aa_id])
+    @aa_id = Aa.find(params[:aa_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -78,7 +83,7 @@ class TagsController < ApplicationController
     @tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to tags_url }
+      format.html { redirect_to root_path, notice: "タグ#{@tag.tag}を削除しました"}
       format.json { head :no_content }
     end
   end

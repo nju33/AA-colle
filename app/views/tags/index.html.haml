@@ -1,21 +1,13 @@
-%h1 Listing tags
+%h3="タグ検索結果#{@tags_count}件ヒット"
 
-%table
-  %tr
-    %th Tag
-    %th Aa
-    %th
-    %th
-    %th
-
-  - @tags.each do |tag|
-    %tr
-      %td= tag.tag
-      %td= tag.aa_id
-      %td= link_to 'Show', tag
-      %td= link_to 'Edit', edit_tag_path(tag)
-      %td= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Tag', new_tag_path
+#aa-list
+  -if @aas
+    -@aas.each_with_index do |aa, i|
+      %dl
+        %dt
+          %h2=aa.name
+        %dd
+          %div{:id => "aa#{i}", :class => "aa"}=simple_format(aa.body)
+          .copy-button クリップボードにコピー
+  -else
+    %p ヒットしませんでした。

@@ -7,10 +7,8 @@
           %li= msg
 
   .field
-    = f.label :tag
+    = f.label :tag, 'タグ'
     = f.text_field :tag
-  .field
-    = f.label :aa_id
-    = f.number_field :aa_id
+    = f.hidden_field :aa_id , value: @aa_id.id
   .actions
-    = f.submit 'Save'
+    = f.submit '登録'

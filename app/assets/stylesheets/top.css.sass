@@ -8,6 +8,7 @@
 @import variable
 // 12Columns
 @import glid
+@import fonts
 
 body
   font:
@@ -15,11 +16,13 @@ body
     family: "MS PGothic", "Osaka", Arial, sans-serif 
   line-height: 1.4em
   padding-top: 5px
+  color: $mainColor
 
 // top
 #contents
   max-width: $width
   margin: 0 auto
+  position: relative
   +row
 
   #side
@@ -41,39 +44,86 @@ body
           text-indent: 100%
           white-space: nowrap
           overflow: hidden
+          &:hover
+            background: url("title_hover.png")
 
       #registration
-        background-color: $mainColor
         height: 2em
         +sideField
 
         a
-          font-size: 2em
-          color: $baseColor
+          font-size: 1.3em
+          color: $mainColor
           position: relative
           top: 0.2em
           margin-left: .2em
+          &:before
+            font-family: 'fontello'
+            vertical-align: top
+            content: 'p'
+          &:hover
+            border-bottom: 1px dashed $mainColor
+            color: $mainHover
 
       nav
         +sideField
 
         ul li
-          background-color: $mainColor
-          padding: 5px 8px
+          padding: .3em 0
 
           a
-            font-size: 2.1em
-            color: $baseColor
+            font-size: 1.3em
+            color: $mainColor
+            &:hover
+              border-bottom: 1px dashed $mainColor
+              color: $mainHover
+            &:before
+              font-size: 2.1em
+              vertical-align: middle
+              content: '・'
+
+
+      #search
+        +sideField
+
+        input[type="search"]
+          +column(8, 10)
+          -webkit-appearance: textfield
+          outline: none
+          height: 1.8em
+          font-size: 1.3em
+          color: $mainColor
+          border: 3px dashed $mainColor
+          border-right: 3px solid $mainColor
+
+        input[type="submit"]
+          +column(2, 10)
+          font-family: 'fontello'
+          height: 1.8em
+          background-color: $mainColor
+          border: none
+          font-size: 1.3em
+          color: $baseColor
+          padding: .2em .2em 0 0
+          &:hover
+            text-shadow: 0 0 .8em $baseColor
+
+        input
+          margin: 0
+
+      #popular_tags
+        +sideField
 
 
   #main
     +borderBox
     +column(8)
+    margin-bottom: 2em
 
     #search-area
       margin-bottom: 1em
 
-    #new-aa-list
+    #aa-list
 
       dl
 
@@ -82,9 +132,13 @@ body
 
           h2
             margin: 0.2em
+            padding: .3em 0 0 .5em
             font-size: 2.1em
+            height: 1em
+            border-left: 5px solid $accentColor
+            letter-spacing: .2em
 
-          #tags
+          .tags
             height: 1.4em
 
             ul
@@ -92,28 +146,125 @@ body
 
               li
                 float: left
-                margin-left: 0.5em
+                margin: 0 0 0 1em
+                &:before
+                  font-family: 'fontello'
+                  content: 't'
 
-            [href="/tags/new"]
+            a
+              color: $mainColor
               margin-left: .5em
 
         dd 
           clear: both
 
-          #aa
+          .aa
             margin: 0 0 1em
-            background-color: #f3f3f3
-            +border-boxShadow(0.2em)
+            background-color: darken($baseColor, 5%)
+            +border-boxShadow(3px, $mainColor)
             +borderBox
 
             p
               font-family: "MS Pゴシック"
               line-height: normal
               font-size: 100% / 16 * 12
+              color: $mainColor
+
+          .copy-button
+            color: $mainColor
+            cursor: pointer
+            &:hover
+              border-bottom: 1px dashed $mainColor
+              color: $mainHover
+            &:before
+              font-family: 'fontello'
+              content: 'd'
+
+
+  #scroll-btn
+    display: none
+    height: 1.4em
+    width: 1.4em
+    background-color: $mainColor
+    +borderRadius(5px)
+    color: $baseColor
+    position: fixed
+    right: 13em
+    bottom: 1.3em
+    font:
+      weight: bold
+      size: 2em
+    padding: .4em 0 0 .1em
+    +borderBox
+    &:after
+      font-family: 'fontello'
+      content: 'u'
 
   footer
     clear: both
+    margin-top: 1em
+    padding-top: 1em
+    border-top: 3px dashed $mainColor
+    font-family: 'fontello'
+    
+    h3
+      font-size: 1.6em
+      font-weight: bold
 
-    span
-      display: block
-      text-align: center
+    #left-footer
+      +column(6, 12)
+
+      #social
+        height: 1em
+        width: 100%
+
+        ul
+          display: inline
+
+          li
+            +column(1, 12)
+
+          #twitter
+            &:after
+              content: 'T'
+              color: $accentColor
+
+          #fb
+            &:after
+              content: 'F'
+              color: $accentColor
+
+          #tumblr
+            &:after
+              content: 'U'
+              color: $accentColor
+
+
+      #contact
+        width: 100%
+        clear: both
+
+        div
+          &:before
+            content: 'c'
+            color: $accentColor
+
+
+    #right-footer
+      +column(6, 12)
+    
+      #sitemap
+        width: 100%
+
+        div
+          &:before
+            content: 'm'
+            color: $accentColor
+
+    #copylight
+      clear: both
+
+      span
+        display: block
+        text-align: center
+        font-weight: bold

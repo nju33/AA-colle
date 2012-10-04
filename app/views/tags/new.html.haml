@@ -1,5 +1,15 @@
-%h1 New tag
+%h2 タグ登録フォーム
+
+.tags
+  %ul
+    -if @tags
+      -@tags.each do |tag|
+        %li=tag.tag
+        =button_to '×', tag, :method => :delete, confirm:'選択されたタグを削除します'
+    -else
+      %li タグはまだありません
+
 
 = render 'form'
 
-= link_to 'Back', tags_path
+= link_to 'ホームへ', root_path

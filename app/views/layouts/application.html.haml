@@ -1,8 +1,8 @@
 !!! 5
-%html
+%html{:lang => "ja"}
   %head
     %meta{:chasset => "utf-8"}
-    %title AAベース
+    %title ＡＡまとめ
     =stylesheet_link_tag 'application'
     =javascript_include_tag 'application'
     =csrf_meta_tag
@@ -11,19 +11,85 @@
     #contents
       #side
         %header{:role => "banner"}
-          #title
-            %h1 AAベース
-          #registration= link_to '登録', new_aa_path
+          =link_to(root_path, :id => 'title') do
+            %h1 AAまとめ
+          #registration= link_to 'AA登録', new_aa_path
           %nav{:role => "navigatore"}
             %ul
               %li= link_to 'ホーム', root_path
-              %li= link_to 'test', aas_path
-              %li= link_to 'test', aas_path
+              %li= link_to 'ランキング', root_path
+              %li= link_to '会員登録', root_path
+          #search
+            =form_tag({:controller => 'tags', :action => 'index', :method => :get}) do
+              =search_field_tag :tag, params[:tag]
+              =submit_tag 's'
+          #popular_tags
+            %h3 人気タグ
+            %ul
+              %li まだ
       
       #main
 
         =yield
 
+      #scroll-btn 
+
       %footer{:role => "contentinfo"}
+        #left-footer
+          #social
+            %h3 ソーシャル
+            %ul
+              %li{id: 'twitter'}
+              %li{id: 'fb'}
+              %li{id: 'tumblr'}
+          #contact
+            %h3 コンタクト
+            %div
+        #right-footer 
+          #sitemap
+            %h3 サイトマップ
+            %div
         #copylight 
-          %span &copy;&nbsp;2012&nbsp;aabase
+          %span &copy;&nbsp;2012&nbsp;ＡＡまとめ
+      :javascript
+        $(function(){
+          $('.copy-button').on('click', function(){
+            var self = $(this);
+            var parent = self.parent();
+            var aaNum = parent.find('.aa').attr('id');
+            var aa = $('#' + aaNum);
+            if(self.text() == "クリップボードにコピー"){
+              self.text("しばらくお待ちください");
+              setTimeout(function(){
+                self.text("クリックしてコピー");
+              }, 1500);
+              self.zclip({
+                path: 'ZeroClipboard.swf',
+                copy:aa.text(),
+                afterCopy:function(){
+                  self.text("コピーしました。")
+                    .css("color", "red");
+                }
+              });
+            }
+            return false;
+          });
+        });
+
+        $(function(){
+          var btn = $('#scroll-btn');
+          $(document).scroll(function(){
+            if($(this).scrollTop() > 200){
+              btn.fadeIn();
+            } else {
+              btn.fadeOut();
+            }
+          });
+
+          btn.on('click', function(){
+            $('body:not(:animated)').animate({
+              scrollTop: 0,
+            }, 300);
+            return false;
+          }); 
+        });

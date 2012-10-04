@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20121002220811) do
 
   create_table "aas", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.string   "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

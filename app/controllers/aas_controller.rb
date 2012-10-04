@@ -27,6 +27,7 @@ class AasController < ApplicationController
   # GET /aas/new.json
   def new
     @aa = Aa.new
+    1.times {@aa.tags.build}
 
     respond_to do |format|
       format.html # new.html.erb

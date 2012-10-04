@@ -21,7 +21,7 @@ class TagsControllerTest < ActionController::TestCase
       post :create, tag: { aa_id: @tag.aa_id, tag: @tag.tag }
     end
 
-    assert_redirected_to tag_path(assigns(:tag))
+    assert_redirected_to root_path
   end
 
   test "should show tag" do
@@ -44,6 +44,6 @@ class TagsControllerTest < ActionController::TestCase
       delete :destroy, id: @tag
     end
 
-    assert_redirected_to tags_path
+    assert_redirected_to root_path
   end
 end

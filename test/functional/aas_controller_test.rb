@@ -21,7 +21,7 @@ class AasControllerTest < ActionController::TestCase
       post :create, aa: { body: @aa.body, name: @aa.name }
     end
 
-    assert_redirected_to aa_path(assigns(:aa))
+    assert_redirected_to root_url
   end
 
   test "should show aa" do

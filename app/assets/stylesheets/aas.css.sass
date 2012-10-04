@@ -16,10 +16,66 @@
     +column(8, 8)
 
     form
+      font:
+        weight: bold
+      color: $mainColor
+      margin-top: 1em
       
       label
         +column(1, 8)
+        font-size: 1.3em
+        &:after
+          content: ":"
+          font-weight: bold
+          font-size: 1.3em
+
+      label[for="aa_name"]
+        position: relative
+        top: .3em
+
+      input[id="aa_name"]
+        +column(5,8)
+        margin-bottom: 1em
+
+      label[for="aa_body"]
+        +column(1, 8)
         +pull(7, 8)
 
-      input[type="text"], textarea, .aciton
+      textarea[id="aa_body"]
         +column(8, 8)
+        margin-bottom: 1em
+        outline: none
+        border: 3px solid $mainColor
+        font-family: 'MS Pゴシック'
+
+      label[id="aa_tag_label"]
+        +column(1,8)
+        position: relative
+        top: .3em
+        margin-bottom: 1em
+
+      input[id="aa_tags"]
+        +column(5,8)
+        margin-bottom: 1em
+
+      .action
+        clear: both
+        margin-bottom: 1em
+        +push(5, 12)
+        +column(2, 12)
+        +pull(5, 12)
+
+        input[type="submit"]
+          background-color: $mainColor
+          color: $baseColor
+          &:hover
+            backgroun-color: $mainHover
+
+      input
+        height: 1.8em
+        font-size: 1.3em
+        outline: none
+        border: 3px solid $mainColor
+
+  a[href="/aas"]
+    clear: both

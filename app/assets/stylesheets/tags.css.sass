@@ -1,0 +1,53 @@
+@charset "utf-8"
+
+// CSSリセット
+@import reset
+// プレフィックスが必要なものまとめ
+@import prefix
+// 変数まとめ
+@import variable
+// 12Columns
+@import glid
+
+#main
+  margin-top: .5em
+
+h2
+  margin-top: .5em
+
+h3
+  font-size: 2.1em
+
+#new_tag
+  margin-top: 5em
+
+#tags
+
+  .tags
+    height: 13.4em
+    margin-top: 3em
+
+  ul
+    display: inline
+
+    li
+      float: left
+      margin: 0 0 0 1em
+      &:before
+        font-family: 'fontello'
+        content: ''
+
+    form
+      position: relative
+      bottom: .3em
+
+      input[value="×"]
+        border: none
+        background-color: transparent
+        font-size: 1.4em
+        cursor: pointer
+
+  a
+    color: $mainColor
+    margin-left: .5em
+
