@@ -1,8 +1,8 @@
 class CreateAas < ActiveRecord::Migration
   def change
     create_table :aas do |t|
-      t.text:name, limit: nil
-      t.string :body
+      t.string:name
+      t.text :body, :limit => nil
 
       t.timestamps
     end
