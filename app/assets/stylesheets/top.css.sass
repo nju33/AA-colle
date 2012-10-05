@@ -23,7 +23,7 @@ body
   @media #{$des}
     max-width: $width
     margin: 0 auto
-  @media #{$smp}
+  @media #{$smp}, #{$tab}
     width: 100%
   position: relative
   +row
@@ -31,21 +31,23 @@ body
   #side
     +borderBox
     +column(1, 4)
-    @media #{$smp}
+    @media #{$smp}, #{$tab}
       +column(4, 4)
 
     header
       @media #{$des}
         padding-top: 1em
-      @media #{$smp}
+      @media #{$smp}, #{$tab}
         width: 100%
       +row
 
       #title
         @media #{$des}
           +sideField
+        @media #{$tab}
+          +column(2,12)
         @media #{$smp}
-          +column(2, 4)
+          +column(1, 2)
           background-color: $mainColor
           padding: .3em 0
 
@@ -55,6 +57,14 @@ body
             width: inherit
             height: 156px
             width: 100%
+            &:hover
+              background: url("title_hover.png") no-repeat
+          @media #{$tab}
+            background: url("title_tab.png") no-repeat
+            height: 109px
+            &:hover
+              background: url("title_hover_tab.png") no-repeat
+          @media #{$des}, #{$tab}
             text-indent: 100%
             white-space: nowrap
             overflow: hidden
@@ -63,33 +73,42 @@ body
             background: none
             color: $baseColor
             text-indent: 1em
-          &:hover
-            background: url("title_hover.png") no-repeat
+            height: auto
 
       #registration
         @media #{$des}
           height: 2em
           +sideField
+        @media #{$tab}
+          +column(5, 12)
+          height: 109px
         @media #{$smp}
-          +column(2, 4)
+          +column(1, 2)
           background-color: $mainColor
           padding: .3em 0
+          height: auto
 
         a
           @media #{$des}
             font-size: 1.3em
-            color: $mainColor
             position: relative
             top: 0.2em
             margin-left: .2em
-            &:hover
-              border-bottom: 1px dashed $mainColor
-              color: $mainHover
+          @media #{$tab}
+            font-size: 1.3em
+            position: relative
+            top: 2em
+            left: 5em
           @media #{$smp}
             font-size: 1.4em
             color: $baseColor
             text-align: center
             display: block
+            position: static
+          @media #{$des}, #{$tab}
+            &:hover
+              border-bottom: 1px dashed $mainColor
+              color: $mainHover
           &:before
             font-family: 'fontello'
             vertical-align: top
@@ -98,11 +117,17 @@ body
       nav
         @media #{$des}
           +sideField
+        @media #{$tab}
+          +column(5, 12)
+          height: 109px
         @media #{$smp}
           width: 100%
+          height: auto
 
         ul li
           //padding: .3em 0
+          @media #{$tab}
+            height: 109 / 4 * 1px
           @media #{$smp}
             +column(1, 4)
             border-bottom: 2px dashed $mainColor
@@ -110,9 +135,8 @@ body
             margin-bottom: .5em
 
           a
-            @media #{$des}
+            @media #{$des}, #{$tab}
               font-size: 1.3em
-              color: $mainColor
               &:hover
                 border-bottom: 1px dashed $mainColor
                 color: $mainHover
@@ -124,8 +148,8 @@ body
               font-size: 1em
               display: block
               text-align: center
-              &:hover
-                color: $mainColor
+              &:before
+                content: ''
 
           form
             float: left
@@ -139,6 +163,13 @@ body
               font-size: 2.1em
               vertical-align: middle
               content: '・'
+            @media #{$smp}
+              font-size: 1em
+              position: relative
+              top: 2.1em
+              right: 0.8em
+              &:before
+                content: ''
 
             div
               position: absolute
@@ -154,15 +185,25 @@ body
       #search
         @media #{$des}
           +sideField
+        @media #{$tab}
+          +push(2, 12)
+          +column(8, 12)
+          +pull(2, 12)
         @media #{$smp}
           width: 100%
+          +push(0, 12)
+          +pull(0, 12)
 
         input[type="search"]
           @media #{$des}
-            +column(8, 10)
             height: 1.8em
             font-size: 1.3em
-            border: 3px dashed $mainColor
+          @media #{$tab}
+            margin-top: 1em
+            height: 1.3em
+          @media #{$des}, #{$tab}
+            +column(8, 10)
+            border: 2px dashed $mainColor
             border-right: 3px solid $mainColor
           @media #{$smp}
             +push(1, 10)
@@ -176,10 +217,14 @@ body
 
         input[type="submit"]
           @media #{$des}
-            +column(2, 10)
             font-size: 1.3em
             height: 1.8em
             padding: .2em .2em 0 0
+          @media #{$tab}
+            height: 1.3em
+            margin-top: 1em
+          @media #{$des}, #{$tab}
+            +column(2, 10)
             &:hover
               text-shadow: 0 0 .8em $baseColor
           @media #{$smp}
@@ -187,7 +232,8 @@ body
             +column(1, 10)
             height: 1.1em
             font-size: .89em
-            margin-bottom: 1em
+            position: relative
+            top: .15em
           font-family: 'fontello'
           background-color: $mainColor
           border: none
@@ -199,29 +245,33 @@ body
       #popular-tags
         @media #{$des}
           +sideField
-        @media #{$smp}
+        @media #{$tab}
+          margin-top: 1em
+        @media #{$tab}, #{$smp}
           +column(1, 2)
         
-        h3
-          @media #{$smp}
-            text-indent: .5em
+        //h3
+          //@media #{$smp}
+            //text-indent: .5em
 
       #random-tags
         @media #{$des}
           +sideField
-        @media #{$smp}
+        @media #{$tab}
+          margin-top: 1em
+        @media #{$tab}, #{$smp}
           +column(1, 2)
 
-        h3
-          @media #{$smp}
-            text-indent: .5em
+        //h3
+          //@media #{$smp}
+            //text-indent: .5em
 
 
   #main
     @media #{$des}
       +column(3, 4)
       margin-bottom: 2em
-    @media #{$smp}
+    @media #{$tab}, #{$smp}
       width: 100%
       padding: 0 .3em
       margin: 8.5em 0 2em
@@ -231,6 +281,8 @@ body
       margin-bottom: 1em
 
     #aa-list
+      @media #{$smp}
+        margin-top: 10em
 
       dl
         clear: both
@@ -242,6 +294,9 @@ body
           h2
             @media #{$des}
               font-size: 2.1em
+            @media #{$tab}
+              margin-top: 1.3em
+              font-size: 1.6em
             @media #{$smp}
               font-size: 1.4em
             margin: 0.2em
@@ -274,6 +329,8 @@ body
           .aa
             @media #{$des}
               margin-bottom: 1em
+            @media #{$tab}
+              margin: 0 .3em
             @media #{$smp}
               margin-bottom: .3em
             background-color: darken($baseColor, 5%)
@@ -295,7 +352,7 @@ body
               &:hover
                 border-bottom: 1px dashed $mainColor
                 color: $mainHover
-            @media #{$smp}
+            @media #{$tab}, #{$smp}
               font-size: .89em
               +column(1,2)
             color: $mainColor
@@ -307,7 +364,7 @@ body
             @media #{$des}
               +push(1, 8)
               +column(2, 8)
-            @media #{$smp}
+            @media #{$tab}, #{$smp}
               font-size: .89em
               +column(1, 2)
             text-align: right
@@ -350,7 +407,7 @@ body
       font-weight: bold
 
     #left-footer
-      @media #{$des}
+      @media #{$des}, #{$tab}
         +column(6, 12)
       @media #{$smp}
         width: 100%
@@ -392,7 +449,7 @@ body
 
 
     #right-footer
-      @media #{$des}
+      @media #{$des}, #{$tab}
         +column(6, 12)
       @media #{$smp}
         width: 100%
