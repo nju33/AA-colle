@@ -1,27 +1,26 @@
--if notice
-  %p{:id => "notice"}=notice
+- if notice
+  %p#notice= notice
 
 
 %h2 マイページ
 
-%p{:class => "welcome"}="ようこそ#{@user.name}さん"
+%p.welcome= "ようこそ#{@user.name}さん"
 
 %h4 あなたの活動記録
 #user-record
   %ul
-    -unless @user
+    - unless @user
       %li まだ活動記録がありません
-    -else
-      -@user.aas.each do |aa|
+    - else
+      - @user.aas.each do |aa|
         %li
           %dl
-            %dl
-              %dt
-                %dt=aa.name
-                %dd
-                  .aa=aa.body
-              %dd
-                =link_to '編集する', edit_aa_path(aa.id)
-                =button_to '削除する', aa, method: :delete, confirm: '削除してもよろしいですか？'
+            %dt= aa.name
+            %dd
+              .aa= simple_format(aa.body)
+              .options
+                %ul
+                  %li= link_to '編集する', edit_aa_path(aa.id)
+                  %li= button_to '削除する', aa, method: :delete, confirm: '削除してもよろしいですか？'
             
 

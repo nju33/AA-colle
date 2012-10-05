@@ -29,11 +29,14 @@
             =form_tag({:controller => 'tags', :action => 'index', :method => :get}) do
               =search_field_tag :tag, params[:tag]
               =submit_tag 's'
-          #popular_tags
+          #popular-tags
             %h3 人気タグ
             %ul
               %li まだ
+          #random-tags
             %h3 ランダムタグ
+            %ul
+              %li まだ
 
       
       #main

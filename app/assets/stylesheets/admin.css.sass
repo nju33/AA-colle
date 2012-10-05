@@ -24,11 +24,35 @@
 
   dl
 
-    dt
-
     dd
 
       .aa
         background-color: darken($baseColor, 5%)
         border: 3px solid $mainColor
         +borderBox
+  
+      .options
+        
+        ul
+          +push(5, 8)
+          +column(3, 8)
+
+          li
+            +column(1, 2)
+            text-align: right
+            margin-bottom: 1em
+
+            a
+              color: $mainColor
+              &:hover
+                border-bottom: 1px dashed $mainColor
+                color: $mainHover
+
+            input[type="submit"]
+              color: $mainColor
+              font-size: 1em
+              background-color: transparent
+              border: none
+              &:hover
+                border-bottom: 1px dashed $mainColor
+                color: $mainHover
