@@ -6,10 +6,10 @@
     %title ＡＡまとめ
     =stylesheet_link_tag 'application'
     =javascript_include_tag 'application'
-    //[if lt IE 9]
-    ///=javascript_include_tag 'htm5lshiv'
-    //[if lt IE 8]
-    ///=javascript_include_tag 'respond.min'
+    /[if lt IE 9]
+      =javascript_include_tag 'htm5lshiv'
+    /[if lt IE 8]
+      =javascript_include_tag 'respond.min'
     =csrf_meta_tag
     =favicon_link_tag
     %meta{:name => "keywords", :content => ""}

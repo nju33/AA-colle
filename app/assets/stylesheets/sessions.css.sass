@@ -27,6 +27,12 @@
         font-size: 1.3em
         position: relative
         top: .3em
+        @media #{$tab}, #{$smp}
+          font-size: 1em
+          position: static
+        @media #{$smp}
+          +column(2, 5)
+          +pull(3, 5)
         &:after
           font:
             weight: bold
@@ -41,6 +47,11 @@
         margin-bottom: 1em
         border: 3px solid $mainColor
         color: $mainColor
+        @media #{$tab}, #{$smp}
+          height: 1.3em
+          font-size: 1em
+        @media #{$smp}
+          width: 100%
 
       input[type="submit"]
         +column(2, 12)
@@ -48,3 +59,6 @@
         +push(5, 12)
         background-color: $mainColor
         color: $baseColor
+        @media #{$tab}, #{$smp}
+          font-size: .89em
+          padding-bottom: 1em

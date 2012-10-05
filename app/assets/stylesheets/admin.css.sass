@@ -29,6 +29,8 @@
       .aa
         background-color: darken($baseColor, 5%)
         border: 3px solid $mainColor
+        @media #{$smp}
+          font-size: 100/ 16 * 8%
         +borderBox
   
       .options
@@ -36,6 +38,9 @@
         ul
           +push(5, 8)
           +column(3, 8)
+          @media #{$tab}, #{$smp}
+            width: 100%
+            margin-left: 0
 
           li
             +column(1, 2)
@@ -47,6 +52,10 @@
               &:hover
                 border-bottom: 1px dashed $mainColor
                 color: $mainHover
+              @media #{$tab}, #{$smp}
+                font-size: .89em
+                &:hover
+                  border-bottom: none
 
             input[type="submit"]
               color: $mainColor
@@ -56,3 +65,7 @@
               &:hover
                 border-bottom: 1px dashed $mainColor
                 color: $mainHover
+              @media #{$tab}, #{$smp}
+                font-size: .89em
+                &:hover
+                  border-bottom: none
