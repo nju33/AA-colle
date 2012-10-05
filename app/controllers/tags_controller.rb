@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 class TagsController < ApplicationController
+  skip_before_filter :authorize
   # GET /tags
   # GET /tags.json
   def index

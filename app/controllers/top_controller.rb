@@ -1,4 +1,6 @@
 class TopController < ApplicationController
+  skip_before_filter :authorize
+
   def index
     @asciiArts = Aa.order("created_at desc")
     #user_id = Aa.order("created_at desc").select('user_id')
