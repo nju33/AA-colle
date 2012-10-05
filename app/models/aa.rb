@@ -1,6 +1,7 @@
 class Aa < ActiveRecord::Base
   has_many :tags, dependent: :destroy
-  attr_accessible :body, :name
+  belongs_to :user
+  attr_accessible :body, :name, :user_id
 
   # 登録フォームに
   attr_accessible :tags_attributes

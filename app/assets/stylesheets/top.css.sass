@@ -69,7 +69,7 @@ body
         +sideField
 
         ul li
-          padding: .3em 0
+          //padding: .3em 0
 
           a
             font-size: 1.3em
@@ -82,6 +82,29 @@ body
               vertical-align: middle
               content: '・'
 
+          form
+            float: left
+            font-size: 1.3em
+            +sideField
+            position: relative
+            &:hover
+              border-bottom: 1px dashed $mainColor
+              color: $mainHover
+            &:before
+              font-size: 2.1em
+              vertical-align: middle
+              content: '・'
+
+            div
+              position: absolute
+              bottom: 0em
+              left: 1em
+
+              input[type="submit"]
+                border: none
+                font-size: 1em
+                background-color: transparent
+                color: $mainColor
 
       #search
         +sideField
@@ -126,13 +149,14 @@ body
     #aa-list
 
       dl
+        clear: both
 
         dt 
           padding: 0.2em
 
           h2
             margin: 0.2em
-            padding: .3em 0 0 .5em
+            padding: 0 0 .1em .5em
             font-size: 2.1em
             height: 1em
             border-left: 5px solid $accentColor
@@ -161,7 +185,7 @@ body
           .aa
             margin: 0 0 1em
             background-color: darken($baseColor, 5%)
-            +border-boxShadow(3px, $mainColor)
+            border: 3px solid $mainColor
             +borderBox
 
             p
@@ -173,12 +197,19 @@ body
           .copy-button
             color: $mainColor
             cursor: pointer
+            +column(5, 8)
             &:hover
               border-bottom: 1px dashed $mainColor
               color: $mainHover
             &:before
               font-family: 'fontello'
               content: 'd'
+
+          .user-info
+            +push(1, 8)
+            +column(2, 8)
+            text-align: right
+            color: $accentColor
 
 
   #scroll-btn

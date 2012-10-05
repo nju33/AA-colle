@@ -1,8 +1,8 @@
 class TopController < ApplicationController
   def index
     @asciiArts = Aa.order("created_at desc")
-    #aa_id = @asciiArts.id
-    #@tags = @asciiArts.tags.where(aa_id: aa_id)
+    #user_id = Aa.order("created_at desc").select('user_id')
+    #@users = User.where(id: user_id)
 
     respond_to do |format|
       format.html

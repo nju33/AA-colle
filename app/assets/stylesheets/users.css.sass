@@ -1,0 +1,50 @@
+@charset 'UTF-8'
+// CSSリセット
+@import reset
+// プレフィックスが必要なものまとめ
+@import prefix
+// 変数まとめ
+@import variable
+// 12Columns
+@import glid
+@import fonts
+#users
+
+  #main
+
+    h2
+      font-size: 2.1em
+      margin-top: .3em
+
+    form
+      margin-top: 1em
+      color: $mainColor
+
+      label
+        width: 100 / 12 * 2 - 1%
+        display: inline
+        float: left
+        font-size: 1.3em
+        position: relative
+        top: .3em
+        &:after
+          font:
+            weight: bold
+            size: 1.3em
+          content: ':'
+
+      input
+        +column(10, 12)
+        outline: none
+        height: 1.8em
+        font-size: 1.3em
+        margin-bottom: 1em
+        border: 3px solid $mainColor
+        color: $mainColor
+
+      input[type="submit"]
+        +column(2, 12)
+        +pull(5, 12)
+        +push(5, 12)
+        background-color: $mainColor
+        color: $baseColor

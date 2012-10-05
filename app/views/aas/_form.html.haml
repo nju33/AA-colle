@@ -12,6 +12,8 @@
   = f.label :body, 'AA入力'
   = f.text_area :body, cols: 55, rows: 34
 
+  =f.hidden_field :user_id, value: @user_id
+
   =f.fields_for :tags do |tag|
 
     =tag.label :tag, 'タグ登録', id: 'aa_tag_label'

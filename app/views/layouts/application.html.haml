@@ -18,7 +18,12 @@
             %ul
               %li= link_to 'ホーム', root_path
               %li= link_to 'ランキング', root_path
-              %li= link_to '会員登録', root_path
+              -unless session[:user_id]
+                %li= link_to '会員登録', new_user_path
+                %li= link_to 'ログイン', login_path
+              -else
+                %li= link_to 'マイページ', admin_index_path
+                %li= button_to 'ログアウト', logout_path, method: :delete
           #search
             =form_tag({:controller => 'tags', :action => 'index', :method => :get}) do
               =search_field_tag :tag, params[:tag]
@@ -27,6 +32,8 @@
             %h3 人気タグ
             %ul
               %li まだ
+            %h3 ランダムタグ
+
       
       #main
 

@@ -1,0 +1,14 @@
+-if flash[:alert]
+  =flash[:alert]
+
+%h2 ログイン
+
+=form_tag do
+  =label_tag :name, 'ユーザ名'
+  =text_field_tag :name, params[:name]
+
+  =label_tag :password, 'パスワード'
+  =password_field_tag :password, params[:password]
+
+  =submit_tag 'ログイン'
+

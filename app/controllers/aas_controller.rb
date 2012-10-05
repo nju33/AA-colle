@@ -28,6 +28,7 @@ class AasController < ApplicationController
   def new
     @aa = Aa.new
     1.times {@aa.tags.build}
+    @user_id = session[:user_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -79,7 +80,7 @@ class AasController < ApplicationController
     @aa.destroy
 
     respond_to do |format|
-      format.html { redirect_to aas_url }
+      format.html { redirect_to root_path, notice: "#{@aa.name}を削除しました"}
       format.json { head :no_content }
     end
   end
