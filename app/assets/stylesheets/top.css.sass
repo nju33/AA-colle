@@ -1,179 +1,167 @@
-@charset "utf-8"
+@charset "UTF-8"
 
 // CSSリセット
 @import reset
-// プレフィックスが必要なものまとめ
+// prefix
 @import prefix
-// 変数まとめ
+// variable
 @import variable
-// 12Columns
+// columns: 12
 @import glid
+// font: fontello
 @import fonts
 
 body
   font:
-    size: 100% / 16 * 13
-    family: "MS PGothic", "Osaka", Arial, sans-serif 
+    size: percentage( 13 / 16 )
+    family: Verdana,Arial,"メイリオ",Meiryo,"ヒラギノ角ゴPro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック",sans-serif
   line-height: 1.4em
-  padding-top: 5px
   color: $mainColor
+  background-color: $baseColor
 
 // top
 #contents
-  @media #{$des}
-    max-width: $width
-    margin: 0 auto
-  @media #{$smp}, #{$tab}
-    width: 100%
+  +grid(1, 1)
+  max-width: $width
+  margin: 0 auto
   position: relative
-  +row
 
   #side
     +borderBox
-    +column(1, 4)
-    @media #{$smp}, #{$tab}
-      +column(4, 4)
+    +grid(24, 5, 0, 1)
+    background-color: $mainColor
+    color: $baseColor
+    @media #{$tab}
+      +grid(1, 1)
+      border-bottom: 3px solid mix($baseColor, $mainColor)
 
     header
-      @media #{$des}
-        padding-top: 1em
-      @media #{$smp}, #{$tab}
-        width: 100%
-      +row
+      +grid(1, 1)
+      background-color: $mainColor
 
       #title
-        @media #{$des}
-          +sideField
+        +grid(1, 1)
+        margin-bottom: 0
+        border-bottom: 3px dashed $baseColor
         @media #{$tab}
-          +column(2,12)
+          +grid(8, 3)
         @media #{$smp}
-          +column(1, 2)
-          background-color: $mainColor
-          padding: .3em 0
+          +grid(2, 1)
+          border-bottom: 2px solid mix($baseColor, $mainColor)
 
         h1
+          width: 100%
+          margin: 0
+          margin-left: .5em
+          height: 173px
           @media #{$des}
-            background: url("title.png") no-repeat
-            width: inherit
-            height: 156px
-            width: 100%
-            &:hover
-              background: url("title_hover.png") no-repeat
-          @media #{$tab}
-            background: url("title_tab.png") no-repeat
-            height: 109px
-            &:hover
-              background: url("title_hover_tab.png") no-repeat
-          @media #{$des}, #{$tab}
+            background: url("title2.png") no-repeat
             text-indent: 100%
             white-space: nowrap
             overflow: hidden
-          @media #{$smp}
-            font-size: 1.4em
-            background: none
-            color: $baseColor
-            text-indent: 1em
+            &:hover
+              background: url("title2_hover.png") no-repeat
+          @media #{$tab}
             height: auto
+            padding: .17em
+            color: $baseColor
             &:hover
               color: $mainHover
-
-      #registration
-        @media #{$des}
-          height: 2em
-          +sideField
-        @media #{$tab}
-          +column(5, 12)
-          height: 109px
-        @media #{$smp}
-          +column(1, 2)
-          background-color: $mainColor
-          padding: .3em 0
-          height: auto
-
-        a
-          font-size: 1.3em
-          position: relative
-          top: 0.2em
-          margin-left: .2em
-          color: $mainColor
-          &:hover
-            border-bottom: 1px dashed $mainColor
-            color: $mainHover
-          @media #{$tab}
-            font-size: 1.3em
-            position: relative
-            top: 2em
-            left: 5em
           @media #{$smp}
             font-size: 1.4em
-            color: $baseColor
-            text-align: center
-            display: block
-            position: static
-          @media #{$tab}, #{$smp}
-            &:hover
-              border-bottom: none
-          &:before
-            font-family: 'fontello'
-            vertical-align: top
-            content: 'p'
 
       nav
+        +grid(1, 1)
+        font-size: 1.4em
         @media #{$des}
-          +sideField
+          margin: 1em 0 1em .3em
         @media #{$tab}
-          +column(5, 12)
-          height: 109px
+          +grid(8, 5)
+          border-bottom: 3px dashed $baseColor
+          margin-top: .5em
         @media #{$smp}
-          width: 100%
-          height: auto
+          +grid(1, 1)
 
-        ul li
-          //padding: .3em 0
+        #registration
+          height: 0
+          +sideField
+          margin-bottom: 1.3em
           @media #{$tab}
-            height: 109 / 4 * 1px
+            +grid(5, 1)
           @media #{$smp}
-            +column(1, 4)
-            border-bottom: 2px dashed $mainColor
-            padding: .1em 0
-            margin-bottom: .5em
+            +grid(2, 1)
+            position: absolute
+            top: .15em
+            left: 8.3em
+            height: 1.15em
+            border-bottom: 2px solid mix($baseColor, $mainColor)
 
           a
-            color: $mainColor
+            color: $baseColor
+            @media #{$des}
+              padding: .2em 0
+            &:before
+              font-family: 'fontello'
+              vertical-align: top
+              content: 'p'
+            &:hover
+              border-bottom: 1px dashed $mainColor
+              color: $mainHover
             @media #{$tab}
-              color: $mainColor
               &:hover
-                border-bottom: 1px dashed $mainColor
-            @media #{$des}, #{$tab}
-              font-size: 1.3em
+                border-bottom: none
+            @media #{$smp}
+              text-align: center
+              display: block
+
+        ul
+          @media #{$smp}
+            display: table
+            width: 100%
+            margin: 0
+
+        ul li
+          height: 1.4em
+          @media #{$tab}
+            +grid(5, 1)
+          @media #{$smp}
+            display: table-cell
+            width: auto
+            float: none
+
+          a
+            color: $baseColor
+            @media #{$des}
               &:before
                 font-size: 2.1em
                 vertical-align: middle
                 content: '・'
-            @media #{$tab}, #{$smp}
+            &:hover
+              color: $mainHover
+            @media #{$tab}
               &:hover
                 border-bottom: none
-                color: $mainHover
             @media #{$smp}
               font-size: 1em
               display: block
               text-align: center
-              &:before
-                content: ''
 
           form
+            +grid(1, 1)
             float: left
-            font-size: 1.3em
-            +sideField
+            height: 1em
             position: relative
             &:hover
-              border-bottom: 1px dashed $mainColor
               color: $mainHover
-            &:before
-              font-size: 2.1em
-              vertical-align: middle
-              content: '・'
+              input[type="submit"]
+                color: $mainHover
+            @media #{$des}
+              &:before
+                font-size: 2.1em
+                vertical-align: middle
+                content: '・'
             @media #{$tab}
+              bottom: .15em
               &:hover
                 border: none 
             @media #{$smp}
@@ -181,65 +169,50 @@ body
               position: relative
               top: 2.1em
               right: 0.8em
-              &:before
-                content: ''
 
             div
-              position: absolute
-              bottom: .4em
-              left: 1em
+              @media #{$des}
+                position: absolute
+                left: .7em
+                top: .4em
 
               input[type="submit"]
                 border: none
-                font-size: 1em
                 background-color: transparent
-                color: $mainColor
+                color: $baseColor
 
       #search
-        @media #{$des}
-          +sideField
-        @media #{$tab}
-          +push(2, 12)
-          +column(8, 12)
-          +pull(2, 12)
-        @media #{$smp}
-          width: 100%
-          +push(0, 12)
-          +pull(0, 12)
+        +grid(12, 10, 1, 1)
+        margin-bottom: 1em
 
         input[type="search"]
-          @media #{$des}
-            height: 1.8em
-            font-size: 1.3em
-          @media #{$tab}
-            margin-top: 1em
-            height: 1.3em
-          @media #{$des}, #{$tab}
-            +column(8, 10)
-            border: 2px dashed $mainColor
-            border-right: 3px solid $mainColor
-          @media #{$smp}
-            +push(1, 10)
-            +column(7, 10)
-            height: 1em
-            font-size: 1em
-            border: 2px dashed $mainColor
+          +grid(8, 6)
+          height: 1.3em
+          font-size: 1em
           outline: none
           -webkit-appearance: textfield
           color: $mainColor
+          border: none
+          @media #{$tab}
+            margin-top: 1em
 
         input[type="submit"]
-          @media #{$des}
-            font-size: 1.3em
-            height: 1.8em
-            padding: .2em .2em 0 0
+          display: inline
+          float: left
+          width: 23.5%
+          margin: 0
+          padding: 0
+          font-size: 1em
+          height: 1.5em
+          padding-top: .2em
+          font-family: 'fontello'
+          background-color: $mainColor
+          border: none
+          color: $baseColor
+          &:hover
+            text-shadow: 0 0 .8em $baseColor
           @media #{$tab}
-            height: 1.3em
             margin-top: 1em
-          @media #{$des}, #{$tab}
-            +column(2, 10)
-            &:hover
-              text-shadow: 0 0 .8em $baseColor
           @media #{$smp}
             +pull(1, 10)
             +column(1, 10)
@@ -247,141 +220,167 @@ body
             font-size: .89em
             position: relative
             top: .15em
-          font-family: 'fontello'
-          background-color: $mainColor
-          border: none
-          color: $baseColor
 
         input
           margin: 0
 
+
       #popular-tags
-        @media #{$des}
-          +sideField
+        +grid(1, 1)
+        margin-bottom: 1em
+        margin-left: .8em
         @media #{$tab}
           margin-top: 1em
         @media #{$tab}, #{$smp}
-          +column(1, 2)
-        
-        //h3
-          //@media #{$smp}
-            //text-indent: .5em
+          +grid(2, 1)
 
-      #random-tags
-        @media #{$des}
-          +sideField
-        @media #{$tab}
-          margin-top: 1em
-        @media #{$tab}, #{$smp}
-          +column(1, 2)
+        ul
+          position: relative
+          left: .5em
 
-        //h3
-          //@media #{$smp}
-            //text-indent: .5em
-
-
-  #main
-    @media #{$des}
-      +column(3, 4)
-      margin-bottom: 2em
-    @media #{$tab}, #{$smp}
-      width: 100%
-      padding: 0 .3em
-    +borderBox
-
-    #search-area
-      margin-bottom: 1em
-
-    #aa-list
-      //@media #{$smp}
-        //margin-top: 10em
-
-      dl
-        clear: both
-
-        dt 
-          @media #{$des}
-            padding: 0.2em
-
-          h2
-            @media #{$des}
-              font-size: 2.1em
+          li
+            margin: .3em 0
             @media #{$tab}
-              margin-top: 1.3em
-              font-size: 1.6em
-            @media #{$smp}
-              font-size: 1.4em
-            margin: 0.2em
-            padding: 0 0 .1em .5em
-            height: 1em
-            border-left: 5px solid $accentColor
-            letter-spacing: .2em
-
-          .tags
-            @media #{$des}
-              height: 1.4em
-
-            ul
+              float: left
               display: inline
 
-              li
-                float: left
-                margin: 0 0 0 1em
-                &:before
-                  font-family: 'fontello'
-                  content: 't'
-
             a
-              color: $mainColor
-              margin-left: .5em
-
-        dd 
-          clear: both
-
-          .aa
-            @media #{$des}
-              margin-bottom: 1em
-            @media #{$tab}
-              margin: 0 .3em
-            @media #{$smp}
-              margin-bottom: .3em
-            background-color: darken($baseColor, 5%)
-            border: 3px solid $mainColor
-            +borderBox
-
-            p
-              font-family: "MS Pゴシック"
-              line-height: normal
-              font-size: 100% / 16 * 12
-              color: $mainColor
-              @media #{$smp}
-                font-size: 100% / 16 * 8
-
-          .copy-button
-            @media #{$des}
-              cursor: pointer
-              +column(5, 8)
+              color: $baseColor
               &:hover
-                border-bottom: 1px dashed $mainColor
                 color: $mainHover
-            @media #{$tab}, #{$smp}
-              font-size: .89em
-              +column(1,2)
-            color: $mainColor
-            &:before
-              font-family: 'fontello'
-              content: 'd'
+              @media #{$tab}
+                padding: .5em
 
-          .user-info
-            @media #{$des}
-              +push(1, 8)
-              +column(2, 8)
-            @media #{$tab}, #{$smp}
-              font-size: .89em
-              +column(1, 2)
-            text-align: right
+      #random-tags
+        +grid(1, 1)
+        margin-bottom: 1em
+        margin-left: .8em
+        @media #{$tab}
+          margin-top: 1em
+        @media #{$tab}, #{$smp}
+          +grid(2, 1)
+
+        ul
+          position: relative
+          left: .5em
+
+          li
+            margin: .3em 0
+            @media #{$tab}
+              float: left
+              display: inline
+            
+            a
+              color: $baseColor
+              &:hover
+                color: $mainHover
+              @media #{$tab}
+                padding: .5em
+
+  #main
+    +grid(24, 18)
+    +borderBox
+    margin-top: 0
+    @media #{$tab}
+      width: 100%
+      padding: 0 .3em
+
+    #main-contents
+      +grid(1, 1)
+
+      section
+        margin: 1em 0 2em
+        color: $mainColor
+
+        h1
+          padding: 0 0 .1em .5em
+          height: 1em
+          border-left: 5px solid $accentColor
+          letter-spacing: .2em
+          @media #{$tab}
+            margin-top: 1.3em
+            font-size: 1.6em
+          @media #{$smp}
+            font-size: 1.4em
+
+        .tags
+          height: 1.4em
+          @media #{$smp}
+            overflow: hidden // 対処法さがす
+            font-size: .89em
+            height: 1em
+          
+
+          ul
+            display: inline
+
+            li
+              float: left
+              margin-left: 1.3em
+              &:before
+                font-family: 'fontello'
+                content: 't'
+
+              a
+                color: $mainColor
+                @media #{$smp}
+                  padding: .1em
+                
+          .tag_edit
             color: $accentColor
+            margin-left: 1em
 
+        .aa
+          margin-bottom: .5em
+          background-color: darken($baseColor, 5%)
+          border: 5px solid $mainColor
+          +borderBox
+
+          p
+            font-family: "MS Pゴシック"
+            line-height: normal
+            font-size: 100% / 16 * 12
+            color: $mainColor
+            text-shadow: .021em .021em .055em, -.021em -.021em .055em
+            @media #{$smp}
+              font-size: 100% / 16 * 8
+
+      .copy-button
+        cursor: pointer
+        +grid(8, 5)
+        color: $mainColor
+        &:hover
+          border-bottom: 1px dashed $mainColor
+          color: $mainHover
+        &:before
+          font-family: 'fontello'
+          content: 'd'
+        @media #{$tab}
+          font-size: .89em
+          +grid(2, 1)
+
+      .user-info
+        +grid(8, 2, 1, 0)
+        text-align: right
+        color: $accentColor
+        @media #{$tab}
+          +grid(2, 1)
+          font-size: .89em
+
+      #pagenation
+        text-align: center
+
+        a
+          color: $mainColor
+          margin: 0 .1em
+          @media #{$tab}
+            padding: 1em
+
+        em
+          color: $accentColor
+          margin: 0 .1em
+          @media #{$tab}
+            padding: 1em
 
   #scroll-btn
     position: fixed
@@ -412,64 +411,56 @@ body
   footer
     clear: both
     margin-top: 1em
+    border-top: 3px dashed
     padding-top: 1em
-    border-top: 3px dashed $mainColor
-    font-family: 'fontello'
     
     h3
-      @media #{$des}
-        font-size: 1.6em
       @media #{$smp}
-        font-size: 1em
+        font:
+          size: 1em
+          weight: bold
         &:before
+          font-family: 'fontello'
           content: '・'
-      font-weight: bold
 
     #left-footer
-      @media #{$des}, #{$tab}
-        +column(6, 12)
+      +grid(12, 6)
       @media #{$smp}
         width: 100%
 
       #social
-        height: 1em
         width: 100%
 
         ul
-          display: inline
+          +grid(24, 3, 21, 0)
 
           li
-            +column(1, 12)
+            +grid(3, 1)
 
           #twitter
             &:after
-              content: 'T'
-              color: $accentColor
+              +fontButton('T', $baseColor, $twitterColor)
 
           #fb
             &:after
-              content: 'F'
-              color: $accentColor
+              +fontButton('F', $baseColor, $fbColor)
 
           #tumblr
             &:after
-              content: 'U'
-              color: $accentColor
-
+              +fontButton('U', $baseColor, $tumblrColor)
 
       #contact
         width: 100%
-        clear: both
 
         div
           &:before
+            font-family: 'fontello'
             content: 'c'
             color: $accentColor
 
 
     #right-footer
-      @media #{$des}, #{$tab}
-        +column(6, 12)
+      +grid(12, 6)
       @media #{$smp}
         width: 100%
     
@@ -478,6 +469,7 @@ body
 
         div
           &:before
+            font-family: 'fontello'
             content: 'm'
             color: $accentColor
 

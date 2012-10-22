@@ -14,6 +14,16 @@
     =favicon_link_tag
     %meta{:name => "keywords", :content => ""}
     %meta{:name => "description", :content => ""}
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-35757053-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
   %body{:id => "#{controller.controller_name}", :role => "main"}
     #contents
@@ -21,8 +31,8 @@
         %header{:role => "banner"}
           =link_to(root_path, :id => 'title') do
             %h1 AAまとめ
-          #registration= link_to 'AA登録', new_aa_path
           %nav{:role => "navigatore"}
+            #registration= link_to 'AA登録', new_aa_path
             %ul
               %li= link_to 'ホーム', root_path
               %li= link_to 'ランキング', root_path
@@ -34,63 +44,72 @@
                 %li= button_to 'ログアウト', logout_path, method: :delete
           #search
             =form_tag({:controller => 'tags', :action => 'index', :method => :get}) do
-              =search_field_tag :tag, params[:tag]
+              =search_field_tag :tag, params[:tag], placeholder: '検索'
               =submit_tag 's'
-          #popular-tags
-            %h3 人気タグ
-            %ul
-              %li まだ
-          #random-tags
-            %h3 ランダムタグ
-            %ul
-              %li まだ
 
-      
+          %aside#popular-tags
+            %h4 人気タグ
+            %ul<
+              -unless @popularTags
+                %li ありません
+              -else
+                -@popularTags.each do |tag|
+                  %li= link_to tag.tag, tags_path(tag: tag.tag)
+
+          %aside#random-tags
+            %h4 ランダムタグ
+            %ul<
+              -unless @randomTags
+                %li ありません
+              -else
+                -@randomTags.each do |tag|
+                  %li= link_to tag.tag, tags_path(tag: tag.tag)
+
       #main
 
         =yield
 
-      #scroll-btn 
+        %footer{:role => "contentinfo"}
+          #left-footer
+            #social
+              %h3 ソーシャル
+              %ul
+                %li#twitter
+                %li#fb
+                %li#tumblr
+            #contact
+              %h3 コンタクト
+          #right-footer 
+            #sitemap
+              %h3 サイトマップ
+              %div
+          #copylight 
+            %span &copy;&nbsp;2012&nbsp;ＡＡまとめ
 
-      %footer{:role => "contentinfo"}
-        #left-footer
-          #social
-            %h3 ソーシャル
-            %ul
-              %li{id: 'twitter'}
-              %li{id: 'fb'}
-              %li{id: 'tumblr'}
-          #contact
-            %h3 コンタクト
-            %div
-        #right-footer 
-          #sitemap
-            %h3 サイトマップ
-            %div
-        #copylight 
-          %span &copy;&nbsp;2012&nbsp;ＡＡまとめ
+        #scroll-btn 
+            
       :javascript
         $(function(){
           $('.copy-button').on('click', function(){
-            var self = $(this);
-            var parent = self.parent();
-            var aaNum = parent.find('.aa').attr('id');
-            var aa = $('#' + aaNum);
-            if(self.text() == "クリップボードにコピー"){
-              self.text("しばらくお待ちください");
-              setTimeout(function(){
-                self.text("クリックしてコピー");
-              }, 1500);
-              self.zclip({
-                path: 'ZeroClipboard.swf',
-                copy:aa.text(),
-                afterCopy:function(){
-                  self.text("コピーしました。")
-                    .css("color", "red");
-                }
-              });
-            }
-            return false;
+          var self = $(this);
+          var parent = self.parent();
+          var aaNum = parent.find('.aa').attr('id');
+          var aa = $('#' + aaNum);
+          if(self.text() == "クリップボードにコピー"){
+            self.text("しばらくお待ちください");
+            setTimeout(function(){
+              self.text("クリックしてコピー");
+            }, 1500);
+            self.zclip({
+              path: 'ZeroClipboard.swf',
+              copy:aa.text(),
+              afterCopy:function(){
+                self.text("コピーしました。")
+                  .css("color", "red");
+              }
+            });
+          }
+          return false;
           });
         });
 
@@ -110,4 +129,11 @@
             }, 300);
             return false;
           }); 
+        });
+
+        $(function() {
+          var width = $(window).width();
+          if(width > 768) {
+            $('#contents').equalize(); 
+          }
         });

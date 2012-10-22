@@ -2,28 +2,30 @@
 
 $baseColor: #f3f3f3
 $mainColor: #695D53
+$mainHover: lighten($mainColor, 21%)
 $accentColor: #f0b25b
 
+// ソーシャルカラー
+$twitterColor: #fff
+$fbColor: #fff
+$tumblrColor: #fff
+// デバグカラー
+$dbg: red
+
+// メディアクエリ
 $smp: "only screen and (max-width: 480px)"
 $tab: "only screen and (max-width: 768px)"
 $des: "only screen and (min-width: 769px)"
 
-$mainHover: lighten($mainColor, 21%)
-// デバグカラー
-$dbg: red
-
+// default: width
 $width: 980px
-
-// micro clearfix
-=clearfix
-  *zoom: 1
-  &:before, &:after
-    content: ""
-    display: table
-  &:after
-    clear: both
 
 =sideField
   margin-bottom: 1em
-  +column(3, 4)
-  +pull(1, 4)
+  +grid(1, 1)
+
+=fontButton($content, $color, $background)
+  font-family: 'fontello'
+  content: $content
+  color: $color
+  background-color: $background

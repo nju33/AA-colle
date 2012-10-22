@@ -1,7 +1,17 @@
+$prefix: '', -webkit-, -moz-
+$prefix_all: -webkit-, -moz-, -o-, -ms-, ''
+
 =borderBox
-  box-sizing: border-box
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
+  @each $p in $prefix
+    #{$p}box-sizing: border-box
+
+=boxShadow($values)
+  @each $p in $prefix
+    #{$p}box-shadow: $values
+
+=radius($px)
+  @each $p in $prefix
+    #{$p}border-radius: $px
 
 =border-boxShadow($border: $border, $color: rgba(60, 60, 60, .5))
   box-shadow: 0 0 0 $border $color
