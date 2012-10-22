@@ -43,7 +43,7 @@
                 %li= link_to 'マイページ', admin_index_path
                 %li= button_to 'ログアウト', logout_path, method: :delete
           #search
-            =form_tag({:controller => 'tags', :action => 'index', :method => :get}) do
+            =form_tag({controller: 'tags', action: 'index', method: :get}) do
               =search_field_tag :tag, params[:tag], placeholder: '検索'
               =submit_tag 's'
 

@@ -3,8 +3,8 @@ class TopController < ApplicationController
 
   def index
     @asciiArts = Aa.paginate page: params[:page], order: 'created_at desc', per_page: 8
-    #@popularTags = Tag.find(:all, where: 'COUNT(tag) >= 10', limit: 10)
-    #@randomTags = Tag.find(:all, group: 'tag', order: 'RANDOM()', limit: 10)
+    @popularTags = Tag.select('tag, COUNT(*)').group('tag').having('COUNT(*) >= 10')
+    @randomTags = Tag.select('tag, COUNT(*)').group('tag').order('RANDOM()').limit(10)
 
     respond_to do |format|
       format.html
