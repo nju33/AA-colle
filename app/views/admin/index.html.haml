@@ -8,19 +8,16 @@
 
 %h4 あなたの活動記録
 #user-record
-  %ul
-    - unless @user
-      %li まだ活動記録がありません
-    - else
-      - @user.aas.each do |aa|
-        %li
-          %dl
-            %dt= aa.name
-            %dd
-              .aa= simple_format(aa.body)
-              .options
-                %ul
-                  %li= link_to '編集する', edit_aa_path(aa.id)
-                  %li= button_to '削除する', aa, method: :delete, confirm: '削除してもよろしいですか？'
-            
+  - unless @user
+    %p まだ活動記録がありません
+  - else
+    - @user.aas.each do |aa|
+      %section
+        %h1= aa.name
+        .aa= simple_format(aa.body)
+        .options
+          %ul
+            %li= link_to '編集する', edit_aa_path(aa.id)
+            %li= button_to '削除する', aa, method: :delete, confirm: '削除してもよろしいですか？'
+          
 

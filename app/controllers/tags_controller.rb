@@ -5,10 +5,9 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    tags = Tag.where(:tag => params[:tag]).select('aa_id')
+    tags = Tag.select('aa_id').where(:tag => params[:tag]).order('updated_at desc')
     @tags_count = tags.size
     @aas = Aa.where(:id => tags)
-
 
     respond_to do |format|
       format.html # index.html.erb

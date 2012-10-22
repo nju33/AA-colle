@@ -3,11 +3,9 @@
 #aa-list
   -if @aas
     -@aas.each_with_index do |aa, i|
-      %dl
-        %dt
-          %h2=aa.name
-        %dd
-          %div{:id => "aa#{i}", :class => "aa"}=simple_format(aa.body)
-          .copy-button クリップボードにコピー
+      %section
+        %h1= aa.name
+        %div{:id => "aa#{i}", :class => "aa"}=simple_format(aa.body)
+        .copy-button クリップボードにコピー
   -else
     %p ヒットしませんでした。

@@ -166,9 +166,6 @@ body
                 border: none 
             @media #{$smp}
               font-size: 1em
-              position: relative
-              top: 2.1em
-              right: 0.8em
 
             div
               @media #{$des}
@@ -180,6 +177,8 @@ body
                 border: none
                 background-color: transparent
                 color: $baseColor
+                @media #{$smp}
+                  margin-top: .3em
 
       #search
         +grid(12, 10, 1, 1)
@@ -339,8 +338,8 @@ body
           p
             font-family: "MS Pゴシック"
             line-height: normal
-            font-size: 100% / 16 * 12
             color: $mainColor
+            font-size: percentage(12 / 13)
             margin: 0
             text-shadow: .021em .021em .055em, -.021em -.021em .055em
             @media #{$smp}
