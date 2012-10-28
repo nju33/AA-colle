@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :password_digest
+  attr_accessible :name, :password_digest, :email
   attr_accessible :password, :password_confirmation
 
   has_many :aas
