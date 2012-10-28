@@ -7,12 +7,15 @@
           %li= msg
 
   =f.label :name, 'ユーザ名'
-  =f.text_field :name, size: 55
+  =f.text_field :name
+
+  =f.label :email, 'メールアドレス'
+  =f.text_field :email
 
   =f.label :password, 'パスワード'
-  =f.password_field :password, size: 55
+  =f.password_field :password
 
   =f.label :password_confirmation, 'パスワード確認'
-  =f.password_field :password_confirmation, size: 55
+  =f.password_field :password_confirmation
 
   =f.submit '会員登録'
