@@ -3,19 +3,18 @@
 $baseColor: #f3f3f3
 $mainColor: #695D53
 $mainHover: lighten($mainColor, 21%)
-$accentColor: #f0b25b
+$mix: mix($baseColor, $mainColor)
+$accentColor: #e08d19
 
 // ソーシャルカラー
 $twitterColor: #fff
 $fbColor: #fff
 $tumblrColor: #fff
-// デバグカラー
-$dbg: red
 
 // メディアクエリ
 $smp: "only screen and (max-width: 480px)"
-$tab: "only screen and (max-width: 768px)"
-$des: "only screen and (min-width: 769px)"
+$tab: "only screen and (max-width: 883px)"
+$des: "only screen and (min-width: 884px)"
 
 // default: width
 $width: 980px
@@ -29,3 +28,55 @@ $width: 980px
   content: $content
   color: $color
   background-color: $background
+
+// grid
+// default: 12columns
+$column: percentage( (980 / 12 - 13) / 967 )
+$columns: 12
+
+// micro clearfix
+=clearfix
+  *zoom: 1
+  &:before, &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+
+=grid($columns: 1, $width_columns: 1, $push_columns: 0, $pull_columns: 0)
+  @if $columns == $width_columns
+    display: block
+    +clearfix
+  @else
+    display: inline
+    float: left
+  width: 100% / $columns * $width_columns
+  //@if $push_columns != 0 and $pull_columns != 0
+  margin-left: 100% / $columns * $push_columns
+  margin-right: 100% / $columns * $pull_columns
+
+// prefix
+$prefix: '', -webkit-, -moz-
+$prefix_all: -webkit-, -moz-, -o-, -ms-, ''
+
+=border-box
+  @each $p in $prefix
+    #{$p}box-sizing: border-box
+
+=box-shadow($values)
+  @each $p in $prefix
+    #{$p}box-shadow: $values
+
+=radius($px)
+  @each $p in $prefix
+    #{$p}border-radius: $px
+
+=border-boxShadow($border: $border, $color: rgba(60, 60, 60, .5))
+  box-shadow: 0 0 0 $border $color
+  -webkit-box-shadow: 0 0 0 $border $color
+  -moz-box-shadow: 0 0 0 $border $color
+
+=borderRadius($px)
+  border-radius: $px
+  -webkit-border-radius: $px
+  -moz-border-radius: $px

@@ -6,9 +6,9 @@
         - @tag.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form
     = f.label :tag, 'タグ'
     = f.text_field :tag
-    = f.hidden_field :aa_id , value: @aa_id.id
-  .actions
+  = f.hidden_field :aa_id , value: @aa_id.id
+  .action
     = f.submit '登録'

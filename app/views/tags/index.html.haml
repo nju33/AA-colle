@@ -5,7 +5,21 @@
     -@aas.each_with_index do |aa, i|
       %section
         %h1= aa.name
-        %div{:id => "aa#{i}", :class => "aa"}=simple_format(aa.body)
-        .copy-button クリップボードにコピー
+        .tags
+          - if aa.tags.empty?
+            %ul<
+              %li タグが付けられていません
+              %li= link_to 'タグを編集', new_tag_path(aa_id:  aa.id), class: 'tag-edit'
+          - else
+            %ul<
+              - aa.tags.each do |tag|
+                %li= link_to tag.tag, tags_path(tag: tag.tag)
+              %li= link_to 'タグを編集', new_tag_path(aa_id:  aa.id), class: 'tag-edit'
+        %dl{id: "aa#{i}", class: "aa"}
+          %dt.aa-body<
+            = simple_format(aa.body)
+          %dd.aa-info
+            .copy-button クリップボードにコピー
+            .user-info= "#{aa.user.name}さんが登録"
   -else
     %p ヒットしませんでした。

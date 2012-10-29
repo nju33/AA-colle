@@ -1,19 +1,19 @@
 !!! 5
-%html{:lang => "ja"}
+%html{lang: "ja"}
   %head
-    %meta{:chasset => "utf-8"}
-    %meta{:name => "viewport", :content => "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
+    %meta{chasset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
     %title ＡＡまとめ
-    =stylesheet_link_tag 'application'
-    =javascript_include_tag 'application'
-    //[if lt IE 9]
-    ///=javascript_include_tag 'htm5lshiv'
-    //[if lt IE 8]
-    ///=javascript_include_tag 'respond.min'
+    = stylesheet_link_tag 'application', catch: 'aa-matome'
+    = javascript_include_tag 'application', catch: 'aa-matome'
+    -#/[if lt IE 9]
+      =javascript_include_tag 'htm5lshiv'
+    -#/[if lt IE 8]
+      =javascript_include_tag 'respond.min'
     =csrf_meta_tag
     =favicon_link_tag
-    %meta{:name => "keywords", :content => ""}
-    %meta{:name => "description", :content => ""}
+    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ"}
+    %meta{name: "description", content: "好きなAAを見つけやすく。"}
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-35757053-1']);
@@ -25,17 +25,17 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  %body{:id => "#{controller.controller_name}", :role => "main"}
+  %body
     #contents
       #side
-        %header{:role => "banner"}
-          =link_to(root_path, :id => 'title') do
+        %header{role: "banner"}
+          = link_to(root_path, id: 'title') do
             %h1 AAまとめ
-          %nav{:role => "navigatore"}
-            #registration= link_to 'AA登録', new_aa_path
+          #registration= link_to 'AA登録', new_aa_path
+          %nav{role: "navigatore"}
             %ul
               %li= link_to 'ホーム', root_path
-              %li= link_to 'ランキング', root_path
+              %li= link_to 'ランキング', root_path, style: "text-decoration: line-through;"
               -unless session[:user_id]
                 %li= link_to '会員登録', new_user_path
                 %li= link_to 'ログイン', login_path
@@ -43,33 +43,33 @@
                 %li= link_to 'マイページ', admin_index_path
                 %li= button_to 'ログアウト', logout_path, method: :delete
           #search
-            =form_tag({controller: 'tags', action: 'index', method: :get}) do
-              =search_field_tag :tag, params[:tag], placeholder: '検索'
-              =submit_tag 's'
+            = form_tag({controller: 'tags', action: 'index', method: :get}) do
+              = search_field_tag :tag, params[:tag], placeholder: '検索'
+              = submit_tag 's'
 
           %aside#popular-tags
             %h4 人気タグ
             %ul<
-              -unless @popularTags
+              - unless @popularTags
                 %li ありません
-              -else
-                -@popularTags.each do |tag|
+              - else
+                - @popularTags.each do |tag|
                   %li= link_to tag.tag, tags_path(tag: tag.tag)
 
           %aside#random-tags
             %h4 ランダムタグ
             %ul<
-              -unless @randomTags
+              - unless @randomTags
                 %li ありません
-              -else
-                -@randomTags.each do |tag|
+              - else
+                - @randomTags.each do |tag|
                   %li= link_to tag.tag, tags_path(tag: tag.tag)
 
-      #main
+      %div{id: "#{controller.controller_name}", role: "main"}
 
         =yield
 
-        %footer{:role => "contentinfo"}
+        %footer{role: "contentinfo"}
           #left-footer
             #social
               %h3 ソーシャル
@@ -83,8 +83,7 @@
             #sitemap
               %h3 サイトマップ
               %div
-          #copylight 
-            %span &copy;&nbsp;2012&nbsp;ＡＡまとめ
+          #copylight &copy;&nbsp;2012&nbsp;ＡＡまとめ
 
         #scroll-btn 
             
