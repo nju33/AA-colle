@@ -1,0 +1,45 @@
+@charset "UTF-8"
+
+@import variable
+
+#aas, #sessions, #tags, #users
+
+  fieldset
+    border: none
+    +grid
+    +border-box
+
+    legend
+      font-size: 1.6em
+    
+    .form
+      margin-bottom: .5em
+
+      label
+        +grid(5, 3, 0, 2)
+        &:after
+          content: '：'
+
+      input, textarea
+        +grid
+        border: 2px solid
+        outline: none
+        font-size: percentage(13 / 16)
+        @media #{$des}
+          height: 1.4em
+          font-size: 1.2em
+
+      textarea
+        height: 25em
+        font-size: percentage(13 / 16)
+      
+    .action
+      +grid(3, 1, 1, 1)
+      text-align: center
+      
+      input
+        background-color: $mainColor
+        border: none
+        color: $baseColor
+        height: 3em
+        +box-shadow(1px 1px 5px $mainColor)

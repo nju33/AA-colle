@@ -5,6 +5,7 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
+<<<<<<< HEAD
 
   =f.label :name, 'ユーザ名'
   =f.text_field :name
@@ -19,3 +20,20 @@
   =f.password_field :password_confirmation
 
   =f.submit '会員登録'
+=======
+  
+  .form
+    =f.label :name, 'ユーザ名'
+    =f.text_field :name
+  .form
+    =f.label :email, 'メールアドレス'
+    =f.text_field :email
+  .form
+    =f.label :password, 'パスワード'
+    =f.password_field :password
+  .form
+    =f.label :password_confirmation, 'パスワード確認'
+    =f.password_field :password_confirmation
+  .action
+    =f.submit '会員登録'
+>>>>>>> development

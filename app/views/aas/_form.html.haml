@@ -5,19 +5,18 @@
       %ul
         - @aa.errors.full_messages.each do |msg|
           %li= msg
-
-  = f.label :name, 'AA名'
-  = f.text_field :name, size: 55
-
-  = f.label :body, 'AA入力'
-  = f.text_area :body, cols: 55, rows: 34
-
-  =f.hidden_field :user_id, value: @user_id
-
-  =f.fields_for :tags do |tag|
-
-    =tag.label :tag, 'タグ登録', id: 'aa_tag_label'
-    =tag.text_field :tag, size: 55, id: 'aa_tags', placeholder: '複数登録の場合は空白 かカンマ,で区切ってください'
+  .form
+    = f.label :name, 'AA名'
+    = f.text_field :name
+  .form
+    = f.label :body, 'AA入力'
+    = f.text_area :body
+  = f.hidden_field :user_id, value: @user_id
+  .form
+    = f.fields_for :tags do |tag|
+      .form
+        = tag.label :tag, 'タグ登録', id: 'aa_tag_label'
+        = tag.text_field :tag, id: 'aa_tags', placeholder: '複数登録の場合は空白 かカンマ,で区切ってください'
 
   .action
     = f.submit '登録する'
