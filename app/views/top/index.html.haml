@@ -17,7 +17,7 @@
 
     %dl{id: "aa#{i}", class: "aa"}
       %dt.aa-body<
-        = simple_format(aa.body)
+        = simple_format(aa.body, class: "aa#{i}")
       %dd.aa-info<
         .copy-button クリップボードにコピー
         .user-info= "#{aa.user.name}さんが登録"

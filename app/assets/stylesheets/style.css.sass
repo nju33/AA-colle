@@ -204,22 +204,26 @@ body
               @media #{$des}
                 &:hover
                   color: $mainHover
+
+  #main-frame
+    @media #{$des}
+      +grid(24, 17)
   
   [role="main"]
-    +grid
     +border-box
     @media #{$smp}, #{$tab}
       padding: 1em 0
+      +grid
     @media #{$des}
-      +grid(24, 16, 1, 0)
+      +grid(24, 23, 1, 0)
     @media only screen and (mix-width: 700px)
       width: 700px
       margin: 0
 
     #notice
-      color: #de381b
+      color: $noticeColor
       font-weight: bold
-      border-left: 5px solid #de381b
+      border-left: 5px solid $noticeColor
       padding-left: .5em
       margin-bottom: .5em
 
@@ -227,26 +231,27 @@ body
       text-align: center
 
 
-    footer
-      border-top: 3px dashed
-      clear: both
+  footer
+    +grid
+    border-top: 3px dashed
+    clear: both
+    
+    #left-footer
+      display: none
       
-      #left-footer
-        display: none
-        
-        #social
+      #social
 
-        #contact
+      #contact
 
-      #right-footer
-        display: none
+    #right-footer
+      display: none
 
-        #sitemap
+      #sitemap
 
-      #copylight
-        width: 100%
-        text-align: center
-        font-weight: bold
+    #copylight
+      width: 100%
+      text-align: center
+      font-weight: bold
 
   #scroll-btn
     position: fixed

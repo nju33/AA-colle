@@ -65,8 +65,9 @@
                 - @randomTags.each do |tag|
                   %li= link_to tag.tag, tags_path(tag: tag.tag)
 
-      %div{id: "#{controller.controller_name}", role: "main"}
-        = yield
+      #main-frame
+        %div{id: "#{controller.controller_name}", role: "main"}
+          = yield
         %footer{role: "contentinfo"}
           #left-footer
             #social
@@ -84,53 +85,3 @@
           #copylight &copy;&nbsp;2012&nbsp;ＡＡまとめ
 
         #scroll-btn 
-            
-      :javascript
-        $(function(){
-          $('.copy-button').on('click', function(){
-          var self = $(this);
-          var parent = self.parent();
-          var aaNum = parent.find('.aa').attr('id');
-          var aa = $('#' + aaNum);
-          if(self.text() == "クリップボードにコピー"){
-            self.text("しばらくお待ちください");
-            setTimeout(function(){
-              self.text("クリックしてコピー");
-            }, 1500);
-            self.zclip({
-              path: 'ZeroClipboard.swf',
-              copy:aa.text(),
-              afterCopy:function(){
-                self.text("コピーしました。")
-                  .css("color", "red");
-              }
-            });
-          }
-          return false;
-          });
-        });
-
-        $(function(){
-          var btn = $('#scroll-btn');
-          $(document).scroll(function(){
-            if($(this).scrollTop() > 200){
-              btn.fadeIn();
-            } else {
-              btn.fadeOut();
-            }
-          });
-
-          btn.on('click', function(){
-            $('body:not(:animated)').animate({
-              scrollTop: 0,
-            }, 300);
-            return false;
-          }); 
-        });
-
-        $(function() {
-          var width = $(window).width();
-          if(width > 885) {
-            $('#contents').equalize(); 
-          }
-        });
