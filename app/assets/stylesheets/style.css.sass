@@ -1,0 +1,305 @@
+@charset "UTF-8"
+
+@import variable
+@import fonts
+
+*
+  color: $mainColor
+  line-height: 1.4em
+  font-family: Verdana,Arial,"メイリオ",Meiryo,"ヒラギノ角ゴPro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック",sans-serif
+
+ul
+  list-style: none
+  margin: 0
+
+a
+  text-decoration: none
+
+p
+  margin: 0
+
+@for $i from 0 through 6
+  h#{$i}
+    margin: 0
+
+body
+  background-color: $baseColor
+
+  #contents
+    @media #{$des}
+      max-width: 1080px
+      margin: 0 auto
+
+  #side
+    +border-box
+    +grid
+    background: url("side-wall.png") repeat
+    padding-bottom: 1em
+    @media #{$des}
+      +grid(24, 6)
+      min-width: 256px
+
+    *
+      color: $baseColor
+
+    header
+
+      #title, #registration
+        +grid(2, 1)
+        @media #{$smp}, #{$tab}
+          border-bottom: 3px dashed $mix
+        @media #{$des}
+          +grid
+          +border-box
+
+        a
+          @media #{$smp}, #{$tab}
+            font-size: 2em
+
+      #title
+        @media #{$des}
+          height: 250px
+          background: url("title_image.png") no-repeat
+          text-indent: 100%
+          white-space: nowrap
+          overflow: hidden
+          border-bottom: 3px dashed
+          &:hover
+            background: url("title_image_hover.png") no-repeat 
+
+      #registration
+        @media #{$des}
+          margin: 1em 0 0 .5em
+
+        a
+          &:before
+            font-family: fontello
+            content: '+'
+            letter-spacing: .3em
+          @media #{$des}
+            font-size: 1.4em
+            &:hover
+              color: $mainHover
+
+
+      nav
+        clear: both
+        +grid
+        margin-bottom: 1em
+        @media #{$smp}, #{$tab}
+          border-bottom: 3px dashed
+
+        ul
+          display: table
+          padding: 0
+          width: 100%
+          @media #{$des}
+            +grid
+
+          li
+            display: table-cell
+            width: 25%
+            +border-box
+            @media #{$smp}, #{$tab}
+              padding: .5em 0
+            @media #{$des}
+              +grid
+              text-indent: .2em
+
+            *
+              margin: 0 .3em
+
+            a
+              @media #{$des}
+                font-size: 1.4em
+                &:hover
+                  color: $mainHover
+                &:before
+                  font-family: fontello
+                  content: '●'
+                  letter-spacing: .8em
+                  font-size: .55em
+                  
+
+            form
+              @media #{$des}
+                margin-left: .5em
+                height: 1em
+                &:before
+                  font-family: fontello
+                  content: '●'
+                  letter-spacing: .8em
+                  font-size: .70em
+                &:hover
+                  color: $mainHover
+                  input
+                    color: $mainHover
+              
+              div
+                @media #{$des}
+                  margin: 0
+                  position: relative
+                  bottom: 1.5em
+                  left: 1.3em
+
+                input[type="submit"]
+                  background: transparent
+                  border: none
+                  @media #{$des}
+                    font-size: 1.4em
+                    margin: 0
+                    padding: 0
+
+      #search
+        +grid
+        margin-bottom: 1em
+        @media #{$des}
+          margin-top: 2em
+
+        form
+
+          input
+            border: none
+            outline: none
+            +border-box
+            
+          
+          input[type="search"]
+            +grid(7, 4, 1, 0)
+            color: $mainColor
+
+          input[type="submit"]
+            +grid(7, 1, 0, 1)
+            background-color: $mix
+
+      #popular-tags, #random-tags
+        +grid(2, 1)
+        @media #{$des}
+          +grid
+          +border-box
+          margin: .5em .5em
+
+        h4
+          &:before
+            font-family: fontello
+            content: 'T'
+            letter-spacing: .3em
+
+        ul
+          +grid
+          +border-box
+          padding: 0 .5em 
+
+          li
+
+            a
+              word-wrap: break-word
+              word-break: break-all
+              padding: .5em 0
+                letter-spacing: .3em
+              @media #{$smp}, #{$tab}
+                text-decoration: underline
+              @media #{$des}
+                &:hover
+                  color: $mainHover
+  
+  [role="main"]
+    +grid
+    +border-box
+    padding: 1em 0
+    @media #{$des}
+      +grid(24, 16, 1, 0)
+    @media only screen and (mix-width: 700px)
+      width: 700px
+      margin: 0
+
+    #notice
+      color: #de381b
+      font-weight: bold
+      border-left: 5px solid #de381b
+      padding-left: .5em
+      margin-bottom: .5em
+
+  footer
+    border-top: 3px dashed
+    clear: both
+    
+    #left-footer
+      display: none
+      
+      #social
+
+      #contact
+
+    #right-footer
+      display: none
+
+      #sitemap
+
+    #copylight
+      width: 100%
+      text-align: center
+      font-weight: bold
+
+// ranking
+
+// aas
+
+// tags
+#tags
+  
+  p
+    font-size: 1.6em
+    text-indent: .5em
+
+  ul
+    display: table
+    +border-box
+    padding-left: 2em
+
+    li
+      display: table-cell
+      word-wrap: break-word
+      word-break: break-all
+
+    form
+      display: table-cell
+
+      input
+        background-color: transparent
+        border: none
+        font-family: fontello
+
+  a
+    text-indent: .5em
+    color: $accentColor
+    font-weight: bold
+    +grid
+
+// users
+#users
+
+  p
+    +grid(3, 1)
+    text-indent: .5em
+
+
+  .link
+    +grid(3, 2)
+    text-align: center
+
+  a
+    color: $accentColor
+    font-weight: bold
+
+// sessions
+#sessions
+  p
+    text-indent: .5em
+
+  a
+    color: $accentColor
+    font-weight: bold
+
+// admin
+

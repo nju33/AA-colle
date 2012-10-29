@@ -1,5 +1,8 @@
-%h2 会員登録
+%fieldset
+  %legend 会員登録
+  = render 'form'
 
-= render 'form'
-
-= link_to '戻る', root_path
+%p= link_to 'ホームへ', root_path
+%div.link
+  %span 登録済の方は
+  = link_to 'ログインへ', login_path

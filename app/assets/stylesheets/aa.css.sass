@@ -1,0 +1,104 @@
+@charset "UTF-8"
+
+@import variable
+@import fonts
+
+#top, #admin, #tags
+
+  section
+    +grid
+    +border-box
+    margin: 1em 0
+
+    h1
+      +grid
+      +border-box
+      border-left: 5px solid $accentColor
+      padding-left: .5em
+      letter-spacing: .3em
+
+    .tags
+      margin-left: 1.4em
+
+      ul
+        display: table
+        width: 100%
+        padding: 0
+
+        li
+          display: table-cell
+
+          a
+            word-wrap: break-word
+            word-break: break-all
+            &:before
+              font-family: fontello
+              content: 't'
+              letter-spacing: .3em
+
+            @media #{$des}
+              &:hover
+                color: $mainHover
+
+        .tag-edit
+          color: $accentColor
+          &:before
+            content: ''
+          &:hover
+            color: $accentColor
+            text-decoration: underline
+
+    dl
+
+      .aa-body
+        +border-box
+        border: 5px solid
+        background-color: #f5f5f5
+
+        p
+          margin: 0
+          font:
+            size: percentage(10 / 16)
+            family: 'MS Pゴシック'
+          text-shadow: .5px .5px 1px, -.5px -.5px 1px
+
+      .aa-info
+        +grid
+        margin: 0
+        display: table
+        margin-top: .3em
+
+        *
+          display: table-cell
+          width: 50%
+          font-size: percentage(13 / 16)
+          padding: .5em 0
+
+        .copy-button
+          cursor: pointer
+          &:before
+            font-family: fontello
+            content: 'd'
+            letter-spacing: .3em
+          @media #{$des}
+            &:hover
+              color: $mainHover
+
+        .user-info
+          text-align: right
+          color: $accentColor
+          &:before
+            font-family: fontello
+            content: 'p'
+            letter-spacing: .3em
+
+
+        #admin
+
+          .aa-info
+            display: table
+
+            .copy-button, .edit, .delete, .user-info
+              display: table-cell
+
+
