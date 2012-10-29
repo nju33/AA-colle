@@ -66,9 +66,7 @@
                   %li= link_to tag.tag, tags_path(tag: tag.tag)
 
       %div{id: "#{controller.controller_name}", role: "main"}
-
-        =yield
-
+        = yield
         %footer{role: "contentinfo"}
           #left-footer
             #social
@@ -132,7 +130,7 @@
 
         $(function() {
           var width = $(window).width();
-          if(width > 768) {
+          if(width > 885) {
             $('#contents').equalize(); 
           }
         });
