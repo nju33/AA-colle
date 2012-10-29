@@ -34,7 +34,8 @@ body
     +border-box
     +grid
     background: url("side-wall.png") repeat
-    padding-bottom: 1em
+    @media #{$smp}, #{$tab}
+      padding-bottom: 1em
     @media #{$des}
       +grid(24, 6)
       min-width: 256px
@@ -51,6 +52,7 @@ body
         @media #{$des}
           +grid
           +border-box
+          height: 50px
 
         a
           @media #{$smp}, #{$tab}
@@ -206,7 +208,8 @@ body
   [role="main"]
     +grid
     +border-box
-    padding: 1em 0
+    @media #{$smp}, #{$tab}
+      padding: 1em 0
     @media #{$des}
       +grid(24, 16, 1, 0)
     @media only screen and (mix-width: 700px)
@@ -220,26 +223,46 @@ body
       padding-left: .5em
       margin-bottom: .5em
 
-  footer
-    border-top: 3px dashed
-    clear: both
-    
-    #left-footer
-      display: none
-      
-      #social
-
-      #contact
-
-    #right-footer
-      display: none
-
-      #sitemap
-
-    #copylight
-      width: 100%
+    #pagenation
       text-align: center
-      font-weight: bold
+
+
+    footer
+      border-top: 3px dashed
+      clear: both
+      
+      #left-footer
+        display: none
+        
+        #social
+
+        #contact
+
+      #right-footer
+        display: none
+
+        #sitemap
+
+      #copylight
+        width: 100%
+        text-align: center
+        font-weight: bold
+
+  #scroll-btn
+    position: fixed
+    bottom: 5%
+    right: 5%
+    color: $baseColor
+    background-color: $mainColor
+    +borderRadius(5px)
+    display: none
+    height: 1.6em
+    width: 1.6em
+    padding: 0 0 0 .4em
+    +border-box
+    &:after
+      font-family: 'fontello'
+      content: 'u'
 
 // ranking
 
