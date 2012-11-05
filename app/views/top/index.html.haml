@@ -22,4 +22,4 @@
         .copy-button クリップボードにコピー
         .user-info= "#{aa.user.name}さんが登録"
     
-#pagenation= will_paginate @asciiArts
+= will_paginate @asciiArts, previous_label: "<", next_label: ">"

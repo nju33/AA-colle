@@ -232,9 +232,19 @@ body
       padding-left: .5em
       margin-bottom: .5em
 
-    #pagenation
+    .pagination
       text-align: center
+      height: 2em
 
+      *
+        background-color: $mainColor
+        color: $baseColor
+        padding: .5em
+        margin: .5em
+        +radius(5px)
+        @media #{$des}
+          &:hover
+            color: $mix
 
   footer
     +grid
