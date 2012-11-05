@@ -169,10 +169,15 @@ body
           input[type="search"]
             +grid(7, 4, 1, 0)
             color: $mainColor
+            -webkit-appearance: textfield
 
           input[type="submit"]
             +grid(7, 1, 0, 1)
             background-color: $mix
+            font-family: fontello
+            font-size: 1.2em
+            &:hover
+              color: $mainColor
 
       #popular-tags, #random-tags
         +grid(2, 1)
@@ -237,11 +242,16 @@ body
     clear: both
     
     #left-footer
-      display: none
-      
+      height: 75px
+
       #social
+        margin-left: .5em
+
+        [class^="t"],[class^="f"],[class^="h"],[class^="m"],[class^="g"]
+          margin: .3em
 
       #contact
+        display: none
 
     #right-footer
       display: none
@@ -270,7 +280,7 @@ body
       font-family: 'fontello'
       content: 'u'
 
-// ranking
+// top and ranking
 
 // aas
 
