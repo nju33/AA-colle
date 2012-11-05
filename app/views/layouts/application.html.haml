@@ -72,7 +72,17 @@
           #left-footer
             #social
               %h3 ソーシャル
-              %ul
+              <div class="ninja_onebutton">
+              :javascript
+                (function(d){
+                  if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_04f743cffe78913cb574ed7dd9907727)=='undefined'){
+                      document.write("<sc"+"ript type='text\/javascript' src='http:\/\/omt.shinobi.jp\/b\/04f743cffe78913cb574ed7dd9907727'><\/sc"+"ript>");
+                  }else{ 
+                      window.NINJA_CO_JP_ONETAG_BUTTON_04f743cffe78913cb574ed7dd9907727.ONETAGButton_Load();}
+                })(document);
+              </script><span class="ninja_onebutton_hidden" style="display:none;"></span><span style="display:none;" class="ninja_onebutton_hidden"></span>
+              </div>
+              -#%ul
                 %li#twitter
                 %li#fb
                 %li#tumblr
