@@ -39,6 +39,8 @@ class AasController < ApplicationController
   # GET /aas/1/edit
   def edit
     @aa = Aa.find(params[:id])
+    1.times {@aa.tags.build}
+    @user_id = session[:user_id]
   end
 
   # POST /aas
@@ -64,7 +66,7 @@ class AasController < ApplicationController
 
     respond_to do |format|
       if @aa.update_attributes(params[:aa])
-        format.html { redirect_to @aa, notice: 'Aa was successfully updated.' }
+        format.html { redirect_to admin_index_path, notice: '編集されました。' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
