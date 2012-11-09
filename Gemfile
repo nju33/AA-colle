@@ -43,6 +43,7 @@ gem 'will_paginate', '~> 3.0'
 group :test, :development do
   gem 'sqlite3'
   gem 'heroku'
+  gem 'rspec-rails', '~>2.0'
 end
 
 group :production do
