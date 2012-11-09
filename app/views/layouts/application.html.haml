@@ -11,7 +11,7 @@
       =javascript_include_tag 'respond.min'
     =csrf_meta_tag
     =favicon_link_tag
-    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ"}
+    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, totora0155"}
     %meta{name: "description", content: "好きなAAを見つけやすく。"}
     :javascript
       var _gaq = _gaq || [];
@@ -42,7 +42,7 @@
                 %li= link_to 'マイページ', admin_index_path
                 %li= button_to 'ログアウト', logout_path, method: :delete
           #search
-            = form_tag({controller: 'tags', action: 'index', method: :get}) do
+            = form_tag({controller: 'tags', action: 'index'}, {method: :get}) do
               = search_field_tag :tag, params[:tag], placeholder: '検索'
               = submit_tag 's'
 
