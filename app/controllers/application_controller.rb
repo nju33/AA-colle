@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   private
-    
     def authorize
       unless User.find_by_id(session[:user_id])
         redirect_to login_path, notice: 'ログインしてください'
