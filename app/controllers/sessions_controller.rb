@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to admin_index_path
     else
-      redirect_to login_path, alret: '登録されていないユーザ名またはパスワードです'
+      redirect_to login_path, notice: '登録されていないユーザ名またはパスワードです'
     end
   end
 

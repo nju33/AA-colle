@@ -11,27 +11,5 @@
   - unless @user
     %p まだ活動記録がありません
   - else
-    - @user.aas.each_with_index do |aa, i|
-      %section
-        %h1= aa.name
-        .tags
-          - if aa.tags.empty?
-            %ul<
-              %li タグが付けられていません
-              %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), class: 'tag-edit'
-          - else
-            %ul<
-              - aa.tags.each do |tag|
-                %li= link_to tag.tag, tags_path(tag: tag.tag)
-              %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), class: 'tag-edit'
-
-        %dl{id: "aa#{i}", class: "aa"}
-          %dt.aa-body<
-            = simple_format(aa.body)
-          %dd.aa-info<
-            .copy-button{style: "width: 25%;"} クリップボードにコピー
-            .edit= link_to '編集する', edit_aa_path(aa.id), style: "width: 25%;"
-            .delete= button_to '削除する', aa, method: :delete, confirm: '削除してもよろしいですか？', style: "width: 25%;"
-            .user-info{style: "width: 25%;display: none"}= "#{aa.user.name}さんが登録"
-              
-
+    = render(patical: "aas/asciiArts", object: @user)
+    = will_paginate @asciiArts, previous_label: "<", next_label: ">"
