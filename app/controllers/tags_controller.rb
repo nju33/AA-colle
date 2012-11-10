@@ -31,6 +31,8 @@ class TagsController < ApplicationController
     @tag = Tag.new
     @tags = Tag.where(:aa_id => params[:aa_id])
     @aa_id = Aa.find(params[:aa_id])
+    #session[:return_to] ||= request.referer
+    #@return = session[:return_to]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -50,7 +52,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to root_path, notice: 'タグを登録しました' }
+        format.html { redirect_to :back, notice: "タグ#{@tag.tag}を登録しました" }
         format.json { render json: @tag, status: :created, location: @tag }
       else
         format.html { render action: "new" }
@@ -82,7 +84,7 @@ class TagsController < ApplicationController
     @tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "タグ#{@tag.tag}を削除しました"}
+      format.html { redirect_to :back, notice: "タグ#{@tag.tag}を削除しました"}
       format.json { head :no_content }
     end
   end

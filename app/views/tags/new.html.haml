@@ -1,3 +1,6 @@
+- if notice
+  %p#notice= notice
+
 %p 登録されているタグ
 
 .tags
@@ -14,4 +17,4 @@
   %legend タグ登録
   = render 'form'
 
-= link_to 'ホームへ', root_path
+= link_to '戻る', :back
