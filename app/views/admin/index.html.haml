@@ -11,5 +11,5 @@
   - unless @user
     %p まだ活動記録がありません
   - else
-    /= render(patical: "aas/asciiArt", object: @user)
-    /= will_paginate @asciiArts, previous_label: "<", next_label: ">"
+    = render(partial: "aas/asciiArt", object: @user.aas)
+    = will_paginate @asciiArts, previous_label: "<", next_label: ">"

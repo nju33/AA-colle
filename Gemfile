@@ -46,6 +46,10 @@ group :test, :development do
   gem 'rspec-rails', '~>2.0'
 end
 
+group :development do
+  gem 'thin'
+end
+
 group :production do
   gem'pg'
 end
