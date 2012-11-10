@@ -238,13 +238,18 @@ body
 
       * a, .current
         background-color: $mainColor
-        color: $baseColor
         padding: .5em
         margin: .5em
         +radius(5px)
+
+      * a
+        color: $baseColor
         @media #{$des}
           &:hover
             color: $mix
+
+      .current
+        color: $mix
 
   footer
     +grid
