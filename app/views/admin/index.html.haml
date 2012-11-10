@@ -8,9 +8,9 @@
 
 %h4 あなたの活動記録
 #user-record
-  - unless @user
+  - unless @asciiArts
     %p まだ活動記録がありません
   - else
     = "現在#{@asciiArts.total_count}個登録されています。"
-    = render(partial: "aas/asciiArt", object: @user.aas)
+    = render(partial: "aas/asciiArt", object: @asciiArts)
     = paginate @asciiArts

@@ -1,8 +1,8 @@
-%h3="タグ検索結果#{@tags_count}件ヒット"
+%h3="タグ検索結果#{@asciiArts.total_count}件ヒット"
 
 #aa-list
-  -if @aas
-    = render(partial: "aas/asciiArt", object: @aas)
+  -if @asciiArts
+    = render(partial: "aas/asciiArt", object: @asciiArts)
     = paginate @asciiArts
   -else
     %p ヒットしませんでした。
