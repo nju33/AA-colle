@@ -73,7 +73,6 @@
 
         *
           display: table-cell
-          width: 50%
           font-size: percentage(13 / 16)
           padding: .5em 0
 
@@ -94,6 +93,17 @@
             font-family: fontello
             content: 'p'
             letter-spacing: .3em
+
+        a[href$="edit"], input[type="submit"]
+          @media #{$des}
+            &:hover
+              color: $mainHover
+          
+
+        input[type="submit"]
+          border: none
+          font-size: 1.2em
+          background-color: transparent
 
         #admin
 

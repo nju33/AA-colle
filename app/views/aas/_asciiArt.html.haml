@@ -17,5 +17,8 @@
         = simple_format(aa.body, class: "aa#{i}")
       %dd.aa-info<
         .copy-button クリップボードにコピー
+        - if controller.controller_name == "admin"
+          = link_to '編集', edit_tag_path(aa.id)
+          = button_to '削除', aa, method: :delete, confirm: "削除してよろしいですか？"
         .user-info= "#{aa.user.name}さんが登録"
 

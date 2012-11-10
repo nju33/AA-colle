@@ -1,8 +1,9 @@
-ja:
+en:
+  hello: "Hello world"
   views:
     pagination:
       previous: "<"
       next: ">"
-      first: "最初"
-      last: "最後"
-      truncate: ""
+      first: "|<"
+      last: ">|"
+      truncate: "..."

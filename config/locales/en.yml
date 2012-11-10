@@ -5,8 +5,8 @@ en:
   hello: "Hello world"
   views:
     pagination:
-      previous: "〈"
-      next: "〉"
-      first: "〈〈はじめ"
-      last: "さいご〉〉"
-      truncate: ""
+      previous: "<"
+      next: ">"
+      first: "|<"
+      last: ">|"
+      truncate: "..."
