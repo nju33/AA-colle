@@ -9,9 +9,7 @@ class TagsController < ApplicationController
     @tags_count = tags.size
     @aas = Aa.where(:id => tags)
 
-    @asciiArts = Aa.paginate page: params[:page], order: 'created_at desc', per_page: 13
-    @popularTags = Tag.select('tag, COUNT(*)').group('tag').having('COUNT(*) >= 10')
-    @randomTags = Tag.select('tag, COUNT(*)').group('tag').order('RANDOM()').limit(10)
+    @asciiArts = Aa.page(params[:page]).per(13).where(id: tags).order("updated_at desc")
 
     respond_to do |format|
       format.html # index.html.erb

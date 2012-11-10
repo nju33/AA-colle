@@ -3,6 +3,6 @@
 #aa-list
   -if @aas
     = render(partial: "aas/asciiArt", object: @aas)
-    = will_paginate @asciiArts, previous_label: "<", next_label: ">"
+    = paginate @asciiArts
   -else
     %p ヒットしませんでした。

@@ -1,6 +1,7 @@
 -if notice
   %p#notice= notice
 
+#aasize-info= "#{@asciiArts.total_count}件中#{@asciiArts.offset_value + 1}〜#{@asciiArts.offset_value + @asciiArts.size}件表示しています。"
 = render(partial: "aas/asciiArt", object: @asciiArts)
     
-= will_paginate @asciiArts, previous_label: "<", next_label: ">"
+= paginate @asciiArts

@@ -38,6 +38,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'haml-rails'
+gem 'kaminari'
 gem 'will_paginate', '~> 3.0'
 
 group :test, :development do
