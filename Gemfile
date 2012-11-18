@@ -55,3 +55,4 @@ group :production do
 end
 
 gem 'omniauth'
+gem 'omniauth-twitter'

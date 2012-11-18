@@ -1,7 +1,7 @@
 -if notice
   %p#notice= notice
 
-%p{style: "text-decoration: line-through;"}= link_to "Twitterでログイン", "/auth/twitter"
+%p{style: "text-decoration: line-through;"}= link_to "Twitterでログイン", "auth/twitter"
 
 =form_tag do
 
@@ -14,7 +14,6 @@
     .form
       =label_tag :password, 'パスワード'
       =password_field_tag :password, params[:password]
-    -#=hidden_field_tag, name: "authenticity_token", value: "#{form_authenticity_token}"
     .action
       =submit_tag 'ログイン'
 

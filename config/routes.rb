@@ -7,6 +7,8 @@ Aabase::Application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  match "/auth/:provider/callback" => "sessions#callback"
+
   resources :users
 
   resources :tags

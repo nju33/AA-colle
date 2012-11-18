@@ -10,10 +10,18 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to admin_index_path
+      redirect_to admin_index_path, notice: "ログインしました"
     else
       redirect_to login_path, notice: '登録されていないユーザ名またはパスワードです'
     end
+  end
+
+  def callback
+    auth = request.env["omniauth.auth"]
+    omniuser = Omniuser.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Omniuser.create_with_omniauth(auth)
+    session[:user_id] = omniuser.id
+    session[:omniflag] = 1
+    redirect_to admin_index_path, notice: "ログインしました"
   end
 
   def destroy
