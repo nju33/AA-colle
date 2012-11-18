@@ -18,9 +18,8 @@ class SessionsController < ApplicationController
 
   def callback
     auth = request.env["omniauth.auth"]
-    omniuser = Omniuser.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Omniuser.create_with_omniauth(auth)
-    session[:user_id] = omniuser.id
-    session[:omniflag] = 1
+    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    session[:user_id] = user.id
     redirect_to admin_index_path, notice: "ログインしました"
   end
 
