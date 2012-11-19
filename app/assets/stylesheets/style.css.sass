@@ -62,13 +62,17 @@ body
       #title
         @media #{$des}
           height: 250px
-          background: url("title_image.png") no-repeat
+          // background: url("title_image.png") no-repeat
+          background-image: url("title_image.png")
+          background-repeat: no-repeat
           text-indent: 100%
           white-space: nowrap
           overflow: hidden
           border-bottom: 3px dashed
           &:hover
-            background: url("title_image_hover.png") no-repeat 
+            // background: url("title_image_hover.png") no-repeat 
+            background-image: url("title_image_hover.png")
+            background-repeat: no-repeat
 
       #registration
         @media #{$des}
