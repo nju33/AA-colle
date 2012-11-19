@@ -1,5 +1,5 @@
 - asciiArt.each_with_index do |aa, i|
-  %section
+  %article
     %h1= aa.name
     .tags
       - if aa.tags.empty?
@@ -14,7 +14,7 @@
 
     %dl{id: "aa#{i}", class: "aa"}
       %dt.aa-body<
-        = simple_format(aa.body, class: "aa#{i}")
+        = simple_format(aa.body, class: "aa#{i}", contenteditable: "true")
       %dd.aa-info<
         .copy-button クリップボードにコピー
         - if controller.controller_name == "admin"
@@ -24,4 +24,3 @@
         .user-info= "#{aa.user.name}さんが登録"
         -#- else
           -#.user-info= "削除されたユーザさんが登録"
-
