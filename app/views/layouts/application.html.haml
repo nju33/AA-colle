@@ -5,10 +5,10 @@
     %meta{name: "viewport", content: "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
     %title ＡＡまとめ
     = stylesheet_link_tag 'application', catch: 'aa-matome'
-    -#/[if lt IE 9]
-      =javascript_include_tag 'htm5lshiv'
-    -#/[if lt IE 8]
-      =javascript_include_tag 'respond.min'
+    /[if lt IE 9]
+      =javascript_include_tag 'htm5lshiv', catch: 'aa-matome'
+    /[if lt IE 8]
+      =javascript_include_tag 'respond.min', catch: 'aa-matome'
     =csrf_meta_tag
     =favicon_link_tag
     %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, totora0155"}
@@ -91,7 +91,8 @@
             #sitemap
               %h3 サイトマップ
               %div
-          #copylight &copy;&nbsp;2012&nbsp;ＡＡまとめ&nbsp;https://github.com/totora0155/AA---
+          #copylight<
+            %small &copy;&nbsp;2012&nbsp;ＡＡまとめ&nbsp;https://github.com/totora0155/AA---
 
         #scroll-btn 
     = javascript_include_tag 'application', catch: 'aa-matome'

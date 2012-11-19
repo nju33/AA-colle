@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// require_tree 
+//= require equalize.min
+//= require jquery.zclip.min
+//= require aa_copy
+//= require contents_equarize
+//= require scroll_button

@@ -52,9 +52,10 @@ $columns: 12
     display: inline
     float: left
   width: 100% / $columns * $width_columns
-  //@if $push_columns != 0 and $pull_columns != 0
-  margin-left: 100% / $columns * $push_columns
-  margin-right: 100% / $columns * $pull_columns
+  @if $push_columns != 0
+    margin-left: 100% / $columns * $push_columns
+  @if $pull_columns != 0
+    margin-right: 100% / $columns * $pull_columns
 
 // prefix
 $prefix: '', -webkit-, -moz-
