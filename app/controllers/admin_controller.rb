@@ -8,7 +8,7 @@ class AdminController < ApplicationController
       end
       session[:omniflag] = nil
       
-      @asciiArts = Aa.page(params[:page]).per(13).where(user_id: session[:user_id]).order("created_at desc")
+      @asciiArts = Aa.page(params[:page]).per(50).where(user_id: session[:user_id]).order("created_at desc")
     end
   end
 end

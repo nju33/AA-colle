@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def aside_tags
-      @popularTags = Tag.select('tag, COUNT(*)').group('tag').having('COUNT(*) >= 10').limit(12)
-      @randomTags = Tag.select('tag, COUNT(*)').group('tag').order('RANDOM()').limit(12)
+      @popularTags = Tag.select('tag, COUNT(*)').group('tag').having('COUNT(*) >= 10').order('RANDOM()').limit(30)
+      @randomTags = Tag.select('tag, COUNT(*)').group('tag').order('RANDOM()').limit(30)
     end
 end

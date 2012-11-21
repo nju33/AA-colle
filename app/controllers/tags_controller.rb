@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     tags = Tag.select('aa_id').where(tag: params[:tag]).order('updated_at desc')
-    @asciiArts = Aa.page(params[:page]).per(13).where(id: tags).order("updated_at desc")
+    @asciiArts = Aa.page(params[:page]).per(50).where(id: tags).order("updated_at desc")
 
     respond_to do |format|
       format.html # index.html.erb

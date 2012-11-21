@@ -38,8 +38,13 @@ body
     @media #{$smp}, #{$tab}
       padding-bottom: 1em
     @media #{$des}
-      +grid(24, 6)
+      width: 13%
+      display: block
+      float: left
       min-width: 256px
+      position: fixed
+      top: 0
+      +clearfix
 
     *
       color: $baseColor
@@ -217,7 +222,10 @@ body
 
   #main-frame
     @media #{$des}
-      +grid(24, 17)
+      width: 76.3%
+      display: block
+      float: right
+      +clearfix
   
   [role="main"]
     +border-box

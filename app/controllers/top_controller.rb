@@ -2,7 +2,7 @@ class TopController < ApplicationController
   skip_before_filter :authorize
 
   def index
-    @asciiArts = Aa.page(params[:page]).per(13).order("created_at desc")
+    @asciiArts = Aa.page(params[:page]).per(50).order("created_at desc")
 
     respond_to do |format|
       format.html
