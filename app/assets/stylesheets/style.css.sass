@@ -45,9 +45,12 @@ body
       position: fixed
       top: 0
       +clearfix
+      &:hover
+        *
+          color: $baseColor
 
     *
-      color: $baseColor
+      color: $mainHover
 
     header
 
@@ -73,7 +76,7 @@ body
           text-indent: 100%
           white-space: nowrap
           overflow: hidden
-          border-bottom: 3px dashed
+          border-bottom: 3px dashed $baseColor
           &:hover
             // background: url("title_image_hover.png") no-repeat 
             background-image: url("title_image_hover.png")
@@ -186,6 +189,7 @@ body
             background-color: $mix
             font-family: fontello
             font-size: 1.2em
+            color: $baseColor
             &:hover
               color: $mainColor
 
