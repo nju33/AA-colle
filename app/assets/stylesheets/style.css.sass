@@ -46,11 +46,13 @@ body
       top: 0
       +clearfix
       &:hover
-        *
+        *:not([id="title"])
           color: $baseColor
 
     *
-      color: $mainHover
+      @media #{$des}
+        +transition(color .5s ease-in-out 0s)
+        color: $mainHover
 
     header
 

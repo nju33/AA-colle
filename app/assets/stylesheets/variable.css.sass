@@ -82,3 +82,7 @@ $prefix_all: -webkit-, -moz-, -o-, -ms-, ''
   border-radius: $px
   -webkit-border-radius: $px
   -moz-border-radius: $px
+
+=transition($property)
+  @each $p in $prefix_all
+    #{$p}transition: $property
