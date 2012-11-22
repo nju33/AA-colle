@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require side_height
 // require_tree 
 // require equalize.min
 //= require jquery.zclip.min
 //= require aa_copy
 // require contents_equarize
 //= require scroll_button
-//= require side_height

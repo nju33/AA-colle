@@ -16,7 +16,7 @@
     = f.fields_for :tags do |tag|
       .form
         = tag.label :tag, 'タグ登録', id: 'aa_tag_label'
-        = tag.text_field :tag, id: 'aa_tags', placeholder: '複数登録の場合は空白 かカンマ,で区切ってください'
+        = tag.text_field :tag, id: 'aa_tags', placeholder: '複数登録の場合は空白で区切ってください'
 
   .action
     = f.submit '登録する'

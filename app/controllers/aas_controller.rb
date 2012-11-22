@@ -27,7 +27,7 @@ class AasController < ApplicationController
   # GET /aas/new.json
   def new
     @aa = Aa.new
-    1.times {@aa.tags.build}
+    @aa.tags.build
     @user_id = session[:user_id]
 
     respond_to do |format|
