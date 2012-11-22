@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
 
   has_many :aas
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true#, uniqueness: true
   has_secure_password
 
   def self.create_with_omniauth(auth)
     create! do |user| 
       user.provider = auth["provider"] 
       user.uid = auth["uid"] 
-      user.name = auth.info.name
+      user.name = auth.info.nickname
       user.password_digest = Product_pass.rand_password
-      #omniuser.screen_name = auth.info.nickname
+      #user.screen_name = auth.info.nickname
     end  
   end 
 
