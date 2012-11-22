@@ -30,41 +30,42 @@
         %header{role: "banner"}
           = link_to(root_path, id: 'title') do
             %h1 AAまとめ
-          #registration= link_to 'AA登録', new_aa_path
-          %nav{role: "navigatore"}
-            %ul
-              -#%li= link_to 'ホーム', root_path
-              -#%li= link_to 'ランキング', root_path, style: "text-decoration: line-through;"
-              -unless session[:user_id]
-                %li= link_to '会員登録', new_user_path
-                %li= link_to 'ログイン', login_path
-              -else
-                %li= link_to 'マイページ', admin_index_path
-                %li= button_to 'ログアウト', logout_path, method: :delete
-          #search
-            = form_tag({controller: 'tags', action: 'index'}, {method: :get}) do
-              = search_field_tag :tag, params[:tag], placeholder: '検索'
-              = submit_tag 's'
+          #side-bottom
+            #registration= link_to 'AA登録', new_aa_path
+            %nav{role: "navigatore"}
+              %ul
+                -#%li= link_to 'ホーム', root_path
+                -#%li= link_to 'ランキング', root_path, style: "text-decoration: line-through;"
+                -unless session[:user_id]
+                  %li= link_to '会員登録', new_user_path
+                  %li= link_to 'ログイン', login_path
+                -else
+                  %li= link_to 'マイページ', admin_index_path
+                  %li= button_to 'ログアウト', logout_path, method: :delete
+            #search
+              = form_tag({controller: 'tags', action: 'index'}, {method: :get}) do
+                = search_field_tag :tag, params[:tag], placeholder: '検索'
+                = submit_tag 's'
 
-          %aside#popular-tags
-            %h4 人気タグ
-            %ul<
-              - unless @popularTags
-                %li ありません
-              - else
-                - @popularTags.each_with_index do |tag, i|
-                  - if i < 5
-                    %li= link_to tag.tag, tags_path(tag: tag.tag)
+            %aside#popular-tags
+              %h4 人気タグ
+              %ul<
+                - unless @popularTags
+                  %li ありません
+                - else
+                  - @popularTags.each_with_index do |tag, i|
+                    - if i < 5
+                      %li= link_to tag.tag, tags_path(tag: tag.tag)
 
-          %aside#random-tags
-            %h4 ランダムタグ
-            %ul<
-              - unless @randomTags
-                %li ありません
-              - else
-                - @randomTags.each_with_index do |tag, i|
-                  - if i < 13
-                    %li= link_to tag.tag, tags_path(tag: tag.tag)
+            %aside#random-tags
+              %h4 ランダムタグ
+              %ul<
+                - unless @randomTags
+                  %li ありません
+                - else
+                  - @randomTags.each_with_index do |tag, i|
+                    - if i < 13
+                      %li= link_to tag.tag, tags_path(tag: tag.tag)
 
       #main-frame
         %div{id: "#{controller.controller_name}", role: "main"}

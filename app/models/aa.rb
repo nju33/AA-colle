@@ -8,4 +8,13 @@ class Aa < ActiveRecord::Base
   accepts_nested_attributes_for :tags
 
   validates :name, :body, presence: true
+
+  #def tags_attributes=(tag)
+  #  tags = new Array
+  #  tag_names = tag.to_a.split(/\s/)
+  #  tag_names.to_a.each do |tag_name|
+  #    tags = tag_name
+  #  end
+  #  self.tags = tags
+  #end
 end

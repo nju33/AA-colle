@@ -18,7 +18,7 @@ a
 p
   margin: 0
 
-@for $i from 0 through 6
+@for $i from 0 through 4
   h#{$i}
     margin: 0
 
@@ -45,14 +45,71 @@ body
       position: fixed
       top: 0
       +clearfix
-      &:hover
-        *:not([id="title"])
-          color: $baseColor
-
+    // ここも(´・ω・｀)
     *
+      @media #{$smp}, #{$tab}
+        color: $baseColor
+
+      #title
+        @media #{$des}
+          opacity: .55
+          +transition(opacity .25s ease-in-out 0s)
+          &:hover
+            opacity: 1
+
+      *:not(a[id="title"])
+        @media #{$des}
+          +transition(color .25s ease-in-out 0s)
+          &:hover
+            color: $baseColor
+
+      // なんでやねん(´・ω・｀)
+      #side-bottom
+        @media #{$des}
+          &:hover
+            *
+              color: $baseColor
+
+            #search
+              opacity: 1
+
+        nav
+          a, form
+            &:hover
+              @media #{$des}
+                color: $mainHover
+              
+              input
+                @media #{$des}
+                  color: $mainHover
+
+        *
+          @media #{$des}
+            +transition(color .25s ease-in-out)
+            color: $mainHover
+
+        #search
+          opacity: .55
+          +transition(opacity .25s ease-in-out)
+
+      //&:hover
+        *
+          color: $baseColor
+        
+        #search, #title
+          opacity: 1
+
+    //*
+      @media #{$smp}, #{$tab}
+        color: $baseColor
       @media #{$des}
-        +transition(color .5s ease-in-out 0s)
+        +transition(color .21s ease-in-out 0s)
         color: $mainHover
+
+    // #search, #title
+      @media #{$des}
+        +transition(opacity .21s ease-in-out 0s)
+        opacity: .55
 
     header
 
