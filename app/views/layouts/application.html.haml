@@ -3,7 +3,7 @@
   %head
     %meta{chasset: "utf-8"}
     %meta{name: "viewport", content: "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
-    %title ＡＡまとめ
+    %title ＡＡを見つけやすくするために作ったった-ＡＡまとめ
     = stylesheet_link_tag 'application', catch: 'aa-matome_style'
     /[if lt IE 9]
       = javascript_include_tag 'html5shiv', 'respond.min', catch: 'aa-matome'
@@ -11,8 +11,8 @@
       = javascript_include_tag 'respond.min', catch: 'aa-matome_respond'
     =csrf_meta_tag
     =favicon_link_tag
-    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, totora0155"}
-    %meta{name: "description", content: "好きなAAを見つけやすく。"}
+    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, しまむらくん, totora0155"}
+    %meta{name: "description", content: "一度見たＡＡを探しやすく。好きなＡＡを見つけやすく。"}
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-35757053-1']);
@@ -28,19 +28,19 @@
     #contents
       #side
         %header{role: "banner"}
-          = link_to(root_path, id: 'title') do
+          = link_to(root_path, id: 'title', rel: "index") do
             %h1 AAまとめ
           #side-bottom
-            #registration= link_to 'AA登録', new_aa_path
+            #registration= link_to 'AAを登録', new_aa_path, rel: "registration"
             %nav{role: "navigatore"}
               %ul
                 -#%li= link_to 'ホーム', root_path
                 -#%li= link_to 'ランキング', root_path, style: "text-decoration: line-through;"
                 -unless session[:user_id]
-                  %li= link_to '会員登録', new_user_path
-                  %li= link_to 'ログイン', login_path
+                  %li= link_to '会員登録', new_user_path, rel: "signup"
+                  %li= link_to 'ログイン', login_path, rel: "login"
                 -else
-                  %li= link_to 'マイページ', admin_index_path
+                  %li= link_to 'マイページ', admin_index_path, rel: "admin"
                   %li= button_to 'ログアウト', logout_path, method: :delete
             #search
               = form_tag({controller: 'tags', action: 'index'}, {method: :get}) do
