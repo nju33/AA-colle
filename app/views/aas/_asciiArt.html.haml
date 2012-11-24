@@ -14,7 +14,7 @@
 
     %dl{id: "aa#{i}", class: "aa"}
       %dt.aa-body<
-        = simple_format(aa.body, class: "aa#{i}", contenteditable: "true")
+        = aa_format(aa.body, class: "aa#{i}", contenteditable: "true")
       %dd.aa-info<
         .copy-button クリップボードにコピー
         - if controller.controller_name == "admin"

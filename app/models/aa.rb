@@ -8,6 +8,7 @@ class Aa < ActiveRecord::Base
   accepts_nested_attributes_for :tags
 
   validates :name, :body, presence: true
+  #validates :tag, presence: true
 
   #def tags_attributes=(tag)
   #  tags = new Array
