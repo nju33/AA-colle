@@ -41,7 +41,7 @@
                   %li ありません
                 - else
                   - @popularTags.each_with_index do |tag, i|
-                    - if i < 5
+                    - if i < 8
                       %li= link_to tag.tag, tags_path(tag: tag.tag)
 
             %aside#random-tags
@@ -51,7 +51,7 @@
                   %li ありません
                 - else
                   - @randomTags.each_with_index do |tag, i|
-                    - if i < 13
+                    - if i < 8
                       %li= link_to tag.tag, tags_path(tag: tag.tag)
 
       #main-frame
