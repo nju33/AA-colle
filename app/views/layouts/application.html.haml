@@ -7,23 +7,10 @@
     = stylesheet_link_tag 'application', catch: 'aa-matome_style'
     /[if lt IE 9]
       = javascript_include_tag 'html5shiv', 'respond.min', catch: 'aa-matome'
-    -#/[if lt IE 8]
-      = javascript_include_tag 'respond.min', catch: 'aa-matome_respond'
     =csrf_meta_tag
     =favicon_link_tag
-    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, しまむらくん, totora0155"}
+    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, 東方AA, しまむらくん, totora0155"}
     %meta{name: "description", content: "一度見たＡＡを探しやすく。好きなＡＡを見つけやすく。"}
-    :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-35757053-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
   %body
     #contents
       #side
@@ -88,14 +75,22 @@
                 %li#twitter
                 %li#fb
                 %li#tumblr
-            #contact
+            -##contact
               %h3 コンタクト
           #right-footer 
-            #sitemap
+            %div{style: "margin-left: .5em;"}
+              %p#aa-about AAがうまく表示されない場合
+              = link_to "Kuma_Lite", "http://buraritoyaruo.blog79.fc2.com/blog-entry-667.html", rel: "Kuma_Lite"
+            -##sitemap
               %h3 サイトマップ
               %div
           #copylight<
             %small &copy;&nbsp;2012&nbsp;ＡＡまとめ&nbsp;https://github.com/totora0155/AA---
 
         #scroll-btn 
-    = javascript_include_tag 'application', catch: 'aa-matome_js'
+        = javascript_include_tag 'application', catch: 'aa-matome_js'
+        :javascript
+          var _gaq=[['_setAccount','UA-35757053-1'],['_trackPageview']];
+          (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+          g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g,s)}(document,'script'));

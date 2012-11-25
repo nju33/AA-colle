@@ -1,5 +1,11 @@
 module ApplicationHelper
 
+  def aa_nobr(aa)
+    nobr_tag = tag('nobr')
+    aa.insert 0, nobr_tag
+    aa.html_safe.safe_concat("</nobr>")
+  end
+
   #def aa_format(aa, html_options = {}, options = {})
     # 正規表現がわかりましぇん
     #aa = '' if aa.nil?

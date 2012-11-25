@@ -62,11 +62,22 @@
           margin: 0
           line-height: normal
           font-family: "ＭＳ Ｐゴシック","MS PGothic","Mona","mona-gothic-jisx0208.1990-0",sans-serif
-          @media #{$smp}, #{$tab}
+          @media #{smp}
+            font-size: xx-small
+          @media #{$tab}
             font-size: percentage(10 / 16)
           @media #{$des}
             font-size: percentage(12 / 16)
           text-shadow: .021em .021em .055em, -.021em -.021em .055em
+          overflow: hidden
+          &:hover
+            overflow: auto
+
+        @each $p in "", -mos-
+          p::#{$p}selection
+            text-shadow: none
+            background-color: $accentColor
+            color: $baseColor
 
       .aa-info
         +grid
