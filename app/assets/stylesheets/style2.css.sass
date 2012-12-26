@@ -1,0 +1,117 @@
+@charset "UTF-8"
+
+@import variable
+@import fonts
+
+/* set up ids ********/
+#side
+  +grid(12, 4)
+#side-inner
+
+#title
+  z-index: 100
+  &:before
+    background: url('') no-repeat
+
+#nav
+  z-index: 110
+  position: absolute
+  left:
+  bottom: 
+
+#registration, #signup, #login, #logout, #admin
+  width: percentage((55 / 100) / 3) 
+  display: inline
+
+#registration
+  background: url('') 
+
+#signup
+  background: url('') 
+
+#login
+  background: url('') 
+
+#logout
+  background: url('') 
+
+#admin
+  background: url('') 
+
+#search
+  +grid
+
+  input[type="search"]
+    color: 
+    -webkit-appearance: textfield
+
+  input[type="submit"]
+    background-color: #FFF
+    &:before
+      font-family: 
+      content: ''
+      font-style: 
+
+#search-tags
+  background: url('')
+
+#contents
+  +grid(12, 8)
+
+#contents-inner
+  +grid(10, 8)
+
+#notice
+  color: $accent
+  text-shadow: 1px 1px .5px (60, 60, 60, .55)
+  background-color: lighten($accent, 34%);
+  +grid
+
+#left-footer
+  +grid(2, 1)
+
+#right-footer
+  +grid(2, 1)
+
+#copylight
+  text-align: center
+  +grid
+
+  small
+    color: 
+
+#scroll-btn
+  position: fixed
+  color:
+  background-color: #
+  display: none
+  cursor: pointer
+  &:before
+    font-family: 
+    content: 
+
+
+/* set up classes ********/
+
+// link
+.normal-link
+  text-decoration: none
+  &:hover
+
+.accent-link
+  &:hover
+
+.webfont-link
+  &:before
+    font-family: ""
+    content: ""
+// list
+.list-none
+  list-style: none
+  margin: 0
+
+/* tree ********/
+*
+  color: $assort
+  line-height: 1.4em
+  font-family: Verdana, Arial, "メイリオ" ,Meiryo, "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif

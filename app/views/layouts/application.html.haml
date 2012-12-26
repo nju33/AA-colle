@@ -15,7 +15,7 @@
     #contents
       #side
         %header{role: "banner"}
-          = link_to(root_path, id: 'title', rel: "index") do
+          = link_to(rel: "index", root_path, id: 'title') do
             %h1 AAまとめ
           #side-bottom
             #registration= link_to 'AAを登録', new_aa_path, rel: "registration"
