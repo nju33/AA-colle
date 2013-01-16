@@ -1,117 +1,507 @@
 @charset "UTF-8"
 
-@import variable
-@import fonts
+// icon font
+@import url(http://weloveiconfonts.com/api/?family=entypo|zocial)
 
-/* set up ids ********/
-#side
-  +grid(12, 4)
-#side-inner
+// color
+$base: #f3f3f3
+$assort: #695D53
+$accent: #e08d19
+$font: #695d53
+
+$red: rgba(206, 119, 84, .55)
+$blue: rgba(58, 171, 158, .55)
+$green: rgba(84, 179, 69, .55)
+
+// social rgba color
+$twitter: rgba(107, 190, 213, .25)
+$fb: rgba(32, 141, 195, .25)
+$google: rgba(208, 66, 85, .25)
+
+// default: width
+$width: 980px
+
+// default: 12columns
+$columns: 12
+
+// micro clearfix
+=clearfix
+  *zoom: 1
+  &:before, &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+
+=grid($columns: 1, $width_columns: 1, $push_columns: 0, $pull_columns: 0)
+  @if $columns == $width_columns
+    display: block
+    +clearfix
+  @else
+    display: inline
+    float: left
+  width: 100% / $columns * $width_columns
+  @if $push_columns != 0
+    margin-left: 100% / $columns * $push_columns
+  @if $pull_columns != 0
+    margin-right: 100% / $columns * $pull_columns
+
+// prefix
+$prefix: '', -webkit-, -moz-
+$prefix_all: -webkit-, -moz-, -o-, -ms-, ''
+
+=border-box
+  @each $p in $prefix
+    #{$p}box-sizing: border-box
+
+=border-radius($size)
+  @each $p in $prefix
+    #{$p}border-radius: $size
+
+=border-top-left-radius($size)
+  @each $p in $prefix
+    #{$p}border-top-left-radius: $size
+
+=border-top-right-radius($size)
+  @each $p in $prefix
+    #{$p}border-top-right-radius: $size
+
+=border-bottom-right-radius($size)
+  @each $p in $prefix
+    #{$p}border-bottom-right-radius: $size
+
+=box-shadow($property)
+  @each $p in $prefix
+    #{$p}box-shadow: $property
+
+a
+  text-decoration: none
+  color: $font
+
+h1
+  margin: 0
+
+[class*="entypo-"]
+  &:before 
+    font-family: 'entypo', sans-serif
+
+[class*="zocial-"]
+  &:before
+    font-family: 'zocial', sans-serif
+
+body
+  color: $font
+  font-family: Verdana,Arial,"メイリオ",Meiryo,"ヒラギノ角ゴPro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック",sans-serif
+  margin: 0
+  
+header
+  background: #fff
+  +grid
+  +box-shadow(0 2px .55em $blue)
+  background-color: #f8f8f8
+  position: fixed
+  top: 0
+  z-index: 110
+
+.inner
+  width: $width
+  margin: 0 auto
 
 #title
-  z-index: 100
-  &:before
-    background: url('') no-repeat
+  +grid(3, .77, 0, 1.23)
+  height: 3em
+  margin-top: 1em
+  text-align: center
+  &:hover
+    h1
+      color: lighten($font, 21%)
 
-#nav
-  z-index: 110
-  position: absolute
-  left:
-  bottom: 
+  h1
+    &:before
+      content: "aa "
+      color: transparent
+      background: url(logo.png) no-repeat
+    &:after
+      content: "- ＡＡコレクション、アアコレ。"
+      color: $font
+      position: absolute
+      left: 41.4em
+      top: 4.6em
+      font-size: .39em
 
-#registration, #signup, #login, #logout, #admin
-  width: percentage((55 / 100) / 3) 
-  display: inline
-
-#registration
-  background: url('') 
-
-#signup
-  background: url('') 
+nav
+  +grid(3, 1)
+  height: 3em
+  line-height: 3em
+  margin-top: 1em
 
 #login
-  background: url('') 
+  +grid(2, 1)
+  +border-box
+  margin: 0
+  text-align: center
+  &:hover
+    a
+      color: lighten($font, 21%)
 
-#logout
-  background: url('') 
+[rel="logout"]
+  position: absolute
+  top: 4em
+  margin-left: -5.8em
+  border: none
+  background-color: transparent
+  color: $font
+  cursor: pointer
+  font-size: .8em
+  &:hover
+    color: lighten($font, 21%)
 
-#admin
-  background: url('') 
+#social
+  +grid(2, 1)
+  +border-box
+  margin: 0
+
+  li
+    +grid(3, 1)
+    text-align: center
+    +border-radius(50%)
+    height: 2.5em
+    line-height: 2.5em
+    &:before
+      // シェアボタンを作れたら消す
+      text-decoration: line-through
+
+    a
+      +grid
+      height: 2.5em
+      position: relative
+      bottom: 2.5em
+      
+.zocial-twitter
+  color: #6BBED5
+  background-color: $twitter
+  +box-shadow(0 0 2px 1px $twitter inset)
+  overflow: hidden
+
+  iframe
+    height: 3em
+    position: relative
+    bottom: 3em
+
+    .btn-o
+      height: 5em
+
+      a
+        height: 5em
+
+.zocial-facebook
+  color: #208DC3
+  background-color: $fb
+  margin-top: .5em
+  +box-shadow(0 0 2px 1px $fb inset)
+
+.zocial-googleplus
+  color: #D04255
+  background-color: $google
+  +box-shadow(0 0 2px 1px $google inset)
+
+#powerTip
+  position: absolute
+  background-color: $font
+  color: lighten($font, 55%)
+  z-index: 120
+  padding: .5em .3em
+  +border-radius(2px)
+  font-size: .8em
+  display: none
 
 #search
   +grid
+  text-align: center
+  font-size: .8em
+  
+  form
+    height: .9em
+  
+  input[type = "submit"]
+    position: relative
+    left: -3em
+    width: 2.5em
+    border: none
+    background-color: transparent
+    border-left: 1px solid $font
+    color: transparent
+    z-index: 100
+    cursor: pointer
 
-  input[type="search"]
-    color: 
-    -webkit-appearance: textfield
+// 今はこれでいこう＾＾；
+.entypo-search
+  font-size: 1.3em
+  position: absolute
+  top: 4.15em
+  left: 63.344em
+  color: $font
 
-  input[type="submit"]
-    background-color: #FFF
-    &:before
-      font-family: 
-      content: ''
-      font-style: 
+// なんかズレるときがある
+//#tags .entypo-search
+  left: 58.8em
 
-#search-tags
-  background: url('')
+#tag
+  +border-radius(3em)
+  text-indent: .5em
+  width: 25em
+  height: 2.1em
+  line-height: 2.1em
+  border: 2px solid rgba(60, 60, 60, .25)
+  outline: none
+  color: $font
+  font-size: .9em
 
-#contents
-  +grid(12, 8)
+#contents, footer
+  background: url(gray_jean.png)
 
-#contents-inner
-  +grid(10, 8)
+  .inner
+    margin-top: 3em
+    padding-top: 5em
 
 #notice
-  color: $accent
-  text-shadow: 1px 1px .5px (60, 60, 60, .55)
-  background-color: lighten($accent, 34%);
-  +grid
+  height: 2.1em
+  line-height: 2.1em
+  background-color: $blue
+  +border-radius(.5em)
+  text-indent: 1em
 
-#left-footer
-  +grid(2, 1)
 
-#right-footer
-  +grid(2, 1)
-
-#copylight
+#registration
+  +grid(13, 2, 2.5, 0)
+  +border-radius(50%)
+  +box-shadow(0 0 5px 2px $green inset)
+  height: 2.1em
+  line-height: 2.1em
+  background-color: $green
   text-align: center
-  +grid
-
-  small
-    color: 
-
-#scroll-btn
-  position: fixed
-  color:
-  background-color: #
-  display: none
+  height: 9em
+  line-height: 9em
   cursor: pointer
-  &:before
-    font-family: 
-    content: 
-
-
-/* set up classes ********/
-
-// link
-.normal-link
-  text-decoration: none
   &:hover
+    background-color: lighten($green, 21%)
 
-.accent-link
+  a
+    +grid
+    height: 9em
+
+
+.notice
+  +grid(13, 5.5, .5, 2.5)
+  +border-box
+  +border-top-left-radius(2em)
+  border-bottom: 2px solid #E47B5F
+  height: 2.1em
+  line-height: 2.1em
+  text-align: center
+  background: $red
+  margin-bottom: 9em
+
+// top
+
+#aasize-info
+  margin-bottom: 1em
+  font-weight: bold
+  border-bottom: 2px dashed rgba(60, 60, 60, .34)
+  letter-spacing: .2em
+  +clearfix
+
+.aas
+  +grid
+  +border-radius(1em)
+  background-color: rgba(255, 255, 255, .77)
+  margin-bottom: 1.5em
+  border: 2px solid rgba(60, 60, 60, .25)
   &:hover
+    +box-shadow(0 0 .55em 2px $blue)
 
-.webfont-link
-  &:before
-    font-family: ""
-    content: ""
-// list
-.list-none
-  list-style: none
+.aas-inner
+  background: url(farmer2.png) repeat-y
+  +grid
+  +border-radius(1.4em)
+  overflow: hidden
+  &:hover
+    .aa
+      overflow: auto
+
+.aa-data
+  +grid(8, 2)
+
+  ul
+    list-style: none
+    line-height: 1.5em
+    padding: 0
+    margin: 1em .55em
+
+.tag
+  word-break: break-all
+  word-wrap: break-word
+
+  a
+    &:hover
+      color: lighten($font, 21%)
+    &:before
+      font-family: 'zocial', sans-serif
+      font-size: .8em
+      letter-spacing: .5em
+      color: #3aab9e
+
+.tag-edit
+  margin-left: 1em
+  line-height: 2.5em
+
+.entypo-doc-text
+  +grid(12, 1, 0, 0)
+  cursor: pointer
+  color: $font
+  &:hover
+    color: lighten($font, 21%)
+
+.entypo-cog
+  +grid(12, 1, 10, 0)
+  color: $font
+  &:hover
+    color: lighten($font, 21%)
+
+.aa
+  font-size: 12px
+  font-weight: normal
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", "mona-gothic-jisx0208.1990-0", sans-serif
+  text-shadow: 0 .21px 0.34px rgba(60, 60, 60, .55), 0 -0.21px .34px rgba(60, 60, 60, .55)
+  +grid(8, 6)
   margin: 0
 
-/* tree ********/
-*
-  color: $assort
-  line-height: 1.4em
-  font-family: Verdana, Arial, "メイリオ" ,Meiryo, "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif
+pre
+  margin: .5em 0 1.5em 1em
+  outline: none
+
+.pagination
+  +grid
+  text-align: center
+
+  span
+    margin: 0 .55em
+    padding: .2em
+
+    a
+      &:hover
+        color: lighten($font, 21%)
+
+.current
+  color: $blue
+  border-bottom: 2px solid $blue
+
+#scroll-btn
+  width: 3em
+  height: 3em
+  +border-radius(50%)
+  background-color: $green
+  +box-shadow(0 0 2px 1px $green inset)
+  position: fixed
+  bottom: 2em
+  right: 21%
+  cursor: pointer
+  &:before
+    font-size: 2.1em
+    line-height: 2.1em
+    position: relative
+    bottom: .34em
+    left: .4em
+    color: $green
+  &:hover
+    background-color: lighten($green, 21%)
+    &:before
+      color: darken($green, 21%)
+
+footer
+  text-align: center
+  // AA登録画面
+
+fieldset
+  +grid
+  +border-radius(2em)
+  background-color: rgba(255, 255, 255, .75)
+  border: none
+  margin-bottom: 3em
+
+textarea
+  +grid
+  +border-box
+  margin: 1em
+  border: none
+  background-color: transparent
+  position: relative
+  right: 1em
+  height: 55em
+  color: $font
+  font-size: .8em
+  font-weight: normal
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", "mona-gothic-jisx0208.1990-0", sans-serif
+  text-shadow: 0 .21px 0.34px rgba(60, 60, 60, .55), 0 -0.21px .34px rgba(60, 60, 60, .55)
+
+#aa-tags, #tag_tag
+  +grid(34, 21)
+  height: 2.1em
+  text-indent: .8em
+  border: none
+  background-color: transparent
+  color: $font
+  font-size: .8em
+
+#submit
+  +grid(34, 12, 1, 0)
+  +border-bottom-right-radius(2em)
+  border: none
+  height: 2.1em
+  background-color: $blue
+  color: $font
+  cursor: pointer
+  &:hover
+    background-color: lighten($blue, 21%)
+
+// 編集画面
+#delete-btn
+  +grid
+  text-align: center
+
+  [type="submit"]
+    height: 3em
+    width: 3em
+    +border-radius(50%)
+    background-color: $red
+    border: $red
+    cursor: pointer
+    position: relative
+    bottom: 2.1em
+
+  .entypo-cancel
+    font-size: 2.1em
+    color: $red
+    position: relative
+    top: .45em
+    right: .005em
+
+.current-tag
+  +grid(5, 3, 0, 2)
+
+  form
+    text-align: right
+    position: relative
+    bottom: 1.3em
+
+    [type="submit"]
+      +border-radius(50%)
+      background-color: $green
+      border: none
+      color: $font
+      &:hover
+        background-color: lighten($green, 21%)
+
+#tags #submit
+  +border-top-right-radius(3em)
+  +border-bottom-right-radius(3em)

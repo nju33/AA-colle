@@ -1,7 +1,21 @@
 -if notice
   %p#notice= notice
 
-#aasize-info= "#{@asciiArts.total_count}件中#{@asciiArts.offset_value + 1}〜#{@asciiArts.offset_value + @asciiArts.size}件表示しています。"
+- if session[:user_id] 
+  %p#registration{style: "margin-right: 75%"}= link_to "ＡＡを登録する", new_aa_path, rel: "registration"
+- else
+  %p#registration ＡＡを登録する
+- unless session[:user_id]
+  %p.notice ＡＡを登録するには先にログインしてください！
+-#registration= link_to_if (session[:user_id], "ＡＡを登録。", new_aa_path, rel: "refistration")
+
+#aasize-info= "#{@asciiArts.total_count}件中#{@asciiArts.offset_value + 1}〜#{@asciiArts.offset_value + @asciiArts.size}件のＡＡを表示してます。"
 = render(partial: "aas/asciiArt", object: @asciiArts)
-    
+-#:javascript
+  $(function() {
+    $.autopager({
+      content: '.inner',
+      link   : '.next a'
+    });
+  });  
 = paginate @asciiArts

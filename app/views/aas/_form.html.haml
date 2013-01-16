@@ -5,18 +5,9 @@
       %ul
         - @aa.errors.full_messages.each do |msg|
           %li= msg
-  .form
-    = f.label :name, 'AA名'
-    = f.text_field :name
-  .form
-    = f.label :body, 'AA入力'
-    = f.text_area :body
+  = f.text_area :body, placeholder: "ＡＡを入力またはコピペ(´・ω・｀)"
   = f.hidden_field :user_id, value: @user_id
-  .form
-    = f.fields_for :tags do |tag|
-      .form
-        = tag.label :tag, 'タグ登録', id: 'aa_tag_label'
-        = tag.text_field :tag, id: 'aa_tags', placeholder: '複数登録の場合は空白で区切ってください'
+  = f.fields_for :tags do |tag|
+    = tag.text_field :tag, id: 'aa-tags', placeholder: 'タグ入力 まだできていないので１つづつ登録してください・。・； 例) しまむらくん　やる夫'
 
-  .action
-    = f.submit '登録する'
+  = f.submit '登録する', disable_with: "送信ちゅう…",id: "submit"

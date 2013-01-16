@@ -5,7 +5,8 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    tags = Tag.select('aa_id').where(tag: params[:tag]).order('updated_at desc')
+    @search = params[:tag]
+    tags = Tag.select('aa_id').where("tag LIKE ?", "%#{@search}%").order('updated_at desc')
     @asciiArts = Aa.page(params[:page]).per(50).where(id: tags).order("updated_at desc")
 
     respond_to do |format|
@@ -52,7 +53,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to :back, notice: "タグ#{@tag.tag}を登録しました" }
+        format.html { redirect_to :back, notice: "タグ[#{@tag.tag}]を登録しました。" }
         format.json { render json: @tag, status: :created, location: @tag }
       else
         format.html { render action: "new" }

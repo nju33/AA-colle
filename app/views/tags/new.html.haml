@@ -1,20 +1,18 @@
 - if notice
   %p#notice= notice
 
-%p 登録されているタグ
+%p{style: "border-bottom: 2px dashed rgba(60, 60, 60, .34); font-weight: bold;"} 登録されているタグ
 
-.tags
+.current-tags
   -if @tags
-    %ul
-      -@tags.each do |tag|
-        %li= tag.tag
-        =button_to 'x', tag, :method => :delete, confirm:'選択されたタグを削除します'
-    -else
-      %li タグはまだありません
+    - @tags.each do |tag|
+      .current-tag
+        %span= tag.tag
+        = button_to 'x', tag, :method => :delete, confirm:'選択されたタグを削除します'
+  -else
+    %li タグはまだありません
 
 %fieldset
-  
-  %legend タグ登録
   = render 'form'
 
-= link_to '戻る', :back
+-#= link_to '戻る', :back

@@ -7,13 +7,14 @@ class Aa < ActiveRecord::Base
   attr_accessible :tags_attributes
   accepts_nested_attributes_for :tags
 
-  validates :name, :body, presence: true
+  validates :body, presence: true
   #validates :tag, presence: true
 
-  #def tags_attributes=(tag)
+  #def tags_attributes=(tag_string)
   #  tags = new Array
-  #  tag_names = tag.to_a.split(/\s/)
-  #  tag_names.to_a.each do |tag_name|
+    #tags = tag_string[:tags_attributes]
+    #tag_string[0][:tag].split(/\s/).each { |tag_name| self.tags_attributes = tag_name }
+    #tag_names.to_a.each do |tag_name|
   #    tags = tag_name
   #  end
   #  self.tags = tags

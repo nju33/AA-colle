@@ -1,4 +1,7 @@
+#delete-btn
+  %span.entypo-cancel
+  = button_to '', aa_path, method: :delete, confirm: "削除します。よろしいですか？"
+
 %fieldset
-  %legend AA編集
 
   = render 'form'

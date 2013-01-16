@@ -1,26 +1,28 @@
-- asciiArt.each_with_index do |aa, i|
-  %article
-    %h1= aa.name
-    .tags
-      - if aa.tags.empty?
-        %ul<
-          %li タグが付けられていません
-          %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), class: 'tag-edit'
-      - else
-        %ul<
-          - aa.tags.each do |tag|
-            %li= link_to tag.tag, tags_path(tag: tag.tag)
-          %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), class: 'tag-edit'
-
-    %dl{id: "aa#{i}", class: "aa"}
-      %dt.aa-body<
-        = aa_nobr(simple_format(aa.body, {class: "aa#{i}", contenteditable: "true"}, sanitize: false))
-      %dd.aa-info<
-        .copy-button クリップボードにコピー
-        - if controller.controller_name == "admin"
-          = link_to '編集', edit_aa_path(aa.id)
-          = button_to '削除', aa, method: :delete, confirm: "削除してよろしいですか？"
-        -#- if aa.user.name
-        .user-info= "#{aa.user.name}さんが登録"
-        -#- else
-          -#.user-info= "削除されたユーザさんが登録"
+- asciiArt.each do |aa|
+  .aas
+    .aas-inner
+      .aa-data
+        - if aa.user_id == session[:user_id]
+          %span= link_to '', edit_aa_path(aa.id), class: "entypo-cog"
+        - if session[:user_id]
+          %span.copy-button.entypo-doc-text{id: "#{aa.id}"}
+        - else 
+          %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "width: 95%; text-align: right;"}
+        .tags
+          - if aa.tags.empty?
+            %ul<
+              %li タグが付けられていません
+              -#%li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), { remote: 'true',  class: 'tag-edit' }
+              %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), { class: 'tag-edit' }
+          - else
+            %ul<
+              - aa.tags.each do |tag|
+                %li.tag= link_to tag.tag, tags_path(tag: tag.tag), class: 'zocial-pinboard'
+              -#%li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), { remote: 'true', class: 'tag-edit' }
+              - if aa.tags.size > 15
+                %li.tag-edit{style: "color: rgba(206, 119, 84, .55);"} タグはいっぱいです
+              - else
+                %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), { class: 'tag-edit' }
+      %div{class: "#{dom_class(aa)}"}<
+        -#= aa_nobr(simple_format(aa.body, {class: "aa#{i}", contenteditable: "true"}, sanitize: false))
+        %pre{id: "#{dom_id(aa)}", contenteditable: "true"}= aa.body

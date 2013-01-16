@@ -1,17 +1,9 @@
-$(function(){
-  $(".copy_button").zclip ({
-    //var $self = $(this);
-    //var $aa_number = $self.parent()
-                         // .parent()
-                          //.attr("id");
-    //var $aa = $("." + $aa_number);
-    //beforeCopy: function() {
-    //},
+$(function() {
+  $('.copy-button').zclip({
     path: 'ZeroClipboard.swf',
-    copy: $.text(),
+    copy: function() {return $('#aa_' + $(this).attr('id')).text(); },
     afterCopy: function() {
-      $self.text("コピーしました。")
-        .css("color", "#de381b");
+      $(this).css("color", "rgba(58, 171, 158, .55)");
     }
   });
 });

@@ -3,91 +3,50 @@
   %head
     %meta{chasset: "utf-8"}
     %meta{name: "viewport", content: "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
-    %title ＡＡを見つけやすくするために作ったった-ＡＡまとめ
+    %title ＡＡコレクション - ＡＡ、コレ。
     = stylesheet_link_tag 'application', catch: 'aa-matome_style'
+    -#= stylesheet_link_tag 'style2.css.sass', catch: 'aa-matome_style'
     /[if lt IE 9]
       = javascript_include_tag 'html5shiv', 'respond.min', catch: 'aa-matome'
     =csrf_meta_tag
     =favicon_link_tag
-    %meta{name: "keywords", content: "AAまとめ, AA, アスキーアートまとめ, 東方AA, しまむらくん, totora0155"}
+    %meta{name: "keywords", content: "ＡＡ、コレ。, AA, アスキーアート, totora0155"}
     %meta{name: "description", content: "一度見たＡＡを探しやすく。好きなＡＡを見つけやすく。"}
-  %body
+  %body{id: "#{controller.controller_name}"}
+    %header{role: "banner"}
+      .inner
+        = link_to(root_path, rel: "index", id: "title") do
+          %h1 ＡＡ、コレ。
+        %nav{role: "navigation"}
+          - unless session[:user_id]
+            %p#login= link_to "Twitterでログイン", "auth/twitter"
+          - else
+            %p#login{style: "font-size: 0.8em"} 
+              = link_to "@#{truncate(@user.name, length: 8, omission: "…")}", admin_index_path
+              でログイン中
+            = button_to '- ログアウト', logout_path, method: :delete, rel: "logout"
+          %ul#social
+            %li.zocial-twitter= link_to "", "#", title: "まだ"
+            -#%li.zocial-twitter= link_to "", "https://twitter.com/share", class: "twitter-share-button", :"data-url" => "http://aa-matome.herokuapp.com/", :"data-lang" => "ja", :"data-count" => "none", :"data-size" => "large"
+            %li.zocial-facebook= link_to "", "#", title: "まだ"
+            %li.zocial-googleplus= link_to "", "#", title: "まだ"
+        #search
+          = form_tag({controller: 'tags', ation: 'index'}, {method: :get}) do
+            = text_field_tag :tag, params[:tag], placeholder: "タグ検索"
+            = submit_tag 's'
+          %span.entypo-search
+
     #contents
-      #side
-        %header{role: "banner"}
-          = link_to(rel: "index", root_path, id: 'title') do
-            %h1 AAまとめ
-          #side-bottom
-            #registration= link_to 'AAを登録', new_aa_path, rel: "registration"
-            %nav{role: "navigatore"}
-              %ul
-                -#%li= link_to 'ホーム', root_path
-                -#%li= link_to 'ランキング', root_path, style: "text-decoration: line-through;"
-                -unless session[:user_id]
-                  %li= link_to '会員登録', new_user_path, rel: "signup"
-                  %li= link_to 'ログイン', login_path, rel: "login"
-                -else
-                  %li= link_to 'マイページ', admin_index_path, rel: "admin"
-                  %li= button_to 'ログアウト', logout_path, method: :delete
-            #search
-              = form_tag({controller: 'tags', action: 'index'}, {method: :get}) do
-                = search_field_tag :tag, params[:tag], placeholder: '検索'
-                = submit_tag 's'
+      .inner{role: "main"}        
 
-            %aside#popular-tags
-              %h4 人気タグ
-              %ul<
-                - unless @popularTags
-                  %li ありません
-                - else
-                  - @popularTags.each_with_index do |tag, i|
-                    - if i < 8
-                      %li= link_to tag.tag, tags_path(tag: tag.tag)
+        -# AAを表示させる。
+        = yield
 
-            %aside#random-tags
-              %h4 ランダムタグ
-              %ul<
-                - unless @randomTags
-                  %li ありません
-                - else
-                  - @randomTags.each_with_index do |tag, i|
-                    - if i < 8
-                      %li= link_to tag.tag, tags_path(tag: tag.tag)
+      #scroll-btn.entypo-up-open
+      %footer{role: "contentinfo"}
+        #copylight<
+          %small &copy;&nbsp;2012&nbsp;ＡＡ、コレ。&nbsp;https://github.com/totora0155/AA---
 
-      #main-frame
-        %div{id: "#{controller.controller_name}", role: "main"}
-          = yield
-        %footer{role: "contentinfo"}
-          #left-footer
-            #social
-              %h3 ソーシャル
-              <div class="ninja_onebutton">
-              :javascript
-                (function(d){
-                  if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_04f743cffe78913cb574ed7dd9907727)=='undefined'){
-                      document.write("<sc"+"ript type='text\/javascript' src='http:\/\/omt.shinobi.jp\/b\/04f743cffe78913cb574ed7dd9907727'><\/sc"+"ript>");
-                  }else{ 
-                      window.NINJA_CO_JP_ONETAG_BUTTON_04f743cffe78913cb574ed7dd9907727.ONETAGButton_Load();}
-                })(document);
-              </script><span class="ninja_onebutton_hidden" style="display:none;"></span><span style="display:none;" class="ninja_onebutton_hidden"></span>
-              </div>
-              -#%ul
-                %li#twitter
-                %li#fb
-                %li#tumblr
-            -##contact
-              %h3 コンタクト
-          #right-footer 
-            %div{style: "margin-left: .5em;"}
-              %p#aa-about AAがうまく表示されない場合
-              = link_to "Kuma_Lite", "http://buraritoyaruo.blog79.fc2.com/blog-entry-667.html", rel: "Kuma_Lite"
-            -##sitemap
-              %h3 サイトマップ
-              %div
-          #copylight<
-            %small &copy;&nbsp;2012&nbsp;ＡＡまとめ&nbsp;https://github.com/totora0155/AA---
-
-        #scroll-btn 
     = javascript_include_tag 'application', catch: 'aa-matome_js'
     :javascript
       var _gaq=[['_setAccount','UA-35757053-1'],['_trackPageview']];

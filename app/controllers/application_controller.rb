@@ -2,18 +2,19 @@
 
 class ApplicationController < ActionController::Base
   before_filter :authorize
-  before_filter :aside_tags
+  before_filter :user
   protect_from_forgery
 
   private
     def authorize
       unless User.find_by_id(session[:user_id])
-        redirect_to login_path, notice: 'ログインしてください'
+        redirect_to root_path, notice: '先にログインしてください。'
       end
     end
 
-    def aside_tags
-      @popularTags = Tag.select('tag, COUNT(*)').group('tag').having('COUNT(*) >= 10').order('RANDOM()').limit(30)
-      @randomTags = Tag.select('tag, COUNT(*)').group('tag').order('RANDOM()').limit(30)
+    def user
+      if session[:user_id]
+        @user = User.find_by_id(session[:user_id])
+      end
     end
 end

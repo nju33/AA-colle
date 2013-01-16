@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require side_height
-// require_tree 
-// require equalize.min
 //= require jquery.zclip.min
-//= require aa_copy
-// require contents_equarize
+//= require jquery.powertip-1.1.0.min
+//= require my_powertip
 //= require scroll_button
+//= require copy2
+// require jquery.autopager-1.0.0.min
+// require_tree 
