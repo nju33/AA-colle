@@ -4,7 +4,7 @@
       .aa-data
         - if aa.user_id == session[:user_id]
           %span= link_to '', edit_aa_path(aa.id), class: "entypo-cog"
-        - if session[:user_id]
+        - if aa.user_id == session[:user_id]
           %span.copy-button.entypo-doc-text{id: "#{aa.id}"}
         - else 
           %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "width: 95%; text-align: right;"}
