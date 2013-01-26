@@ -10,6 +10,7 @@
  *
  * require_self
  * require_tree
+ *= require normalize2.css
  *= require style2.css.sass
- *= require normalize.css
+ * require normalize.css
  */

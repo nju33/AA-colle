@@ -6,6 +6,6 @@
         - @tag.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.text_field :tag, placeholder: "タグを入力"
+  = f.text_field :tag, placeholder: "タグを入力", autofocus: "true"
   = f.hidden_field :aa_id , value: @aa_id.id
   = f.submit '登録', id: "submit"

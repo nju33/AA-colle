@@ -4,10 +4,11 @@
     %meta{chasset: "utf-8"}
     %meta{name: "viewport", content: "width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1"}
     %title ＡＡコレクション - ＡＡ、コレ。
+    -# development用
+    -#= stylesheet_link_tag 'normalize.css', 'style2.css.sass'
     = stylesheet_link_tag 'application', catch: 'aa-matome_style'
-    -#= stylesheet_link_tag 'style2.css.sass', catch: 'aa-matome_style'
     /[if lt IE 9]
-      = javascript_include_tag 'html5shiv', 'respond.min', catch: 'aa-matome'
+      = javascript_include_tag 'html5shiv.js', 'respond.min.js', catch: 'aa-matome'
     =csrf_meta_tag
     =favicon_link_tag
     %meta{name: "keywords", content: "ＡＡ、コレ。, AA, アスキーアート, totora0155"}
@@ -33,9 +34,9 @@
         #search
           = form_tag({controller: 'tags', ation: 'index'}, {method: :get}) do
             = text_field_tag :tag, params[:tag], placeholder: "タグ検索"
-            = submit_tag 's'
-        / submit画像の変わりにウェブフォント
-        %span.entypo-search
+            = submit_tag ''
+        -#submit画像の変わりにウェブフォント
+        -#%span.entypo-search
 
     #contents
       .inner{role: "main"}        
