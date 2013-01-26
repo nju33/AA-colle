@@ -102,6 +102,7 @@ header
   position: fixed
   top: 0
   z-index: 110
+  height: 5em
 
 .inner
   width: $width
@@ -124,10 +125,11 @@ header
     &:after
       content: "- ＡＡコレクション、アアコレ。"
       color: $font
-      position: absolute
-      left: 41.4em
-      top: 4.6em
+      position: relative
+      left: 2em
+      top: .5em
       font-size: .39em
+      display: block
 
 nav
   +grid(3, 1)
@@ -237,9 +239,9 @@ nav
 // 今はこれでいこう＾＾；
 .entypo-search
   font-size: 1.3em
-  position: absolute
-  top: 4.15em
-  left: 63.344em
+  position: relative
+  bottom: .5em
+  left: 6.5em
   color: $font
 
 // なんかズレるときがある
