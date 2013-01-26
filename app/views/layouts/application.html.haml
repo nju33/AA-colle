@@ -34,7 +34,8 @@
           = form_tag({controller: 'tags', ation: 'index'}, {method: :get}) do
             = text_field_tag :tag, params[:tag], placeholder: "タグ検索"
             = submit_tag 's'
-          %span.entypo-search
+        / submit画像の変わりにウェブフォント
+        %span.entypo-search
 
     #contents
       .inner{role: "main"}        
