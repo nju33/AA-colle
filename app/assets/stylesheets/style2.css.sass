@@ -356,14 +356,20 @@ nav
   line-height: 2.5em
 
 .entypo-doc-text
-  +grid(12, 1, 0, 0)
+  +grid(12, 2.5, 0, .2)
   cursor: pointer
   color: $font
+  font-size: 12px
+  float: none
+  font-weight: bold
   &:hover
     color: lighten($font, 21%)
+  &:before
+    font-size: 16px
+    font-weight: normal
 
 .entypo-cog
-  +grid(12, 1, 10, 0)
+  +grid(12, 1, 8.3, 0)
   color: $font
   &:hover
     color: lighten($font, 21%)

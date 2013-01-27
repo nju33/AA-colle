@@ -5,9 +5,9 @@
         - if aa.user_id == session[:user_id]
           %span= link_to '', edit_aa_path(aa.id), class: "entypo-cog"
         - if aa.user_id == session[:user_id]
-          %span.copy-button.entypo-doc-text{id: "#{aa.id}"}
+          %span.copy-button.entypo-doc-text{id: "#{aa.id}"} コピー
         - else 
-          %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "width: 95%; text-align: right;"}
+          %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "width: 95%; text-align: right;"} コピー
         .tags
           - if aa.tags.empty?
             %ul<
