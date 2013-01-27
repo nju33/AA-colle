@@ -7,7 +7,7 @@
         - if aa.user_id == session[:user_id]
           %span.copy-button.entypo-doc-text{id: "#{aa.id}"} コピー
         - else 
-          %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "width: 95%; text-align: right;"} コピー
+          %span.copy-button.entypo-doc-text{id: "#{aa.id}", style: "margin-left: 16em"} コピー
         .tags
           - if aa.tags.empty?
             %ul<
