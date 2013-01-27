@@ -25,4 +25,4 @@
                 %li= link_to 'タグを編集', new_tag_path(aa_id: aa.id), { rel: "tag-edit", class: 'tag-edit', target: "_black" }
       %div{class: "#{dom_class(aa)}"}<
         -#= aa_nobr(simple_format(aa.body, {class: "aa#{i}", contenteditable: "true"}, sanitize: false))
-        %pre{id: "#{dom_id(aa)}", contenteditable: "true", style: 'font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", "mona-gothic-jisx0208.1990-0", sans-serif'}= aa.body
+        %pre{id: "#{dom_id(aa)}", contenteditable: "true", style: 'font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", "mona-gothic-jisx0208.1990-0", sans-serif; word-wrap: "normal"; white-space: "pre";'}= aa.body
