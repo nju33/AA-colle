@@ -118,15 +118,19 @@ header
       color: lighten($font, 21%)
 
   h1
+    position: relative
+    bottom: 1.5em
     &:before
-      content: "aa "
-      color: transparent
+      content: ""
       background: url(logo.png) no-repeat
+      height: 1.3em
+      display: block
+      position: relative
+      top: 1.3em
+      right: .3em
     &:after
       content: "- ＡＡコレクション、アアコレ。"
       color: $font
-      position: relative
-      left: 2em
       line-height: .8em
       font-size: .39em
       display: block

@@ -9,7 +9,7 @@ $(function(){
   });
 
   btn.on('click', function(){
-    $('window:not(:animated)').animate({
+    $('html:not(:animated), body:not(:animated)').animate({
       scrollTop: 0,
     }, 300);
     return false;
